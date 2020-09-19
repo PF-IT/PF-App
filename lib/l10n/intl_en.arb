@@ -1,0 +1,11 @@
+{
+
+    "pfName_msg": "Polytechnic Association",
+    "welcome_msg": "Welcome",
+    "selectChapter_msg": "Please choose a chapter you would like to read",
+    "chapters_msg": "Chapters",
+    "markdownList_opt": "english_md_list",
+    "error_warn": "Error",
+    "prepping_warn": "Prepping some content for ya"
+
+}
