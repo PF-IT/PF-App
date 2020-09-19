@@ -14,14 +14,14 @@ jobs:
     steps:
       - name: Fastlane Action (iOS)
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: maierj/fastlane-action@v1.4.0
+        uses: maierj/fastlane-action@v1.4.0
         with:
           lane: 'beta'
           subdirectory: 'ios'
           bundle-install-path: 'vendor/bundle'
 
       - name: Fastlane Action (Android)
-      - uses: maierj/fastlane-action@v1.4.0
+        uses: maierj/fastlane-action@v1.4.0
         with:
           lane: 'beta'
           subdirectory: 'android'
