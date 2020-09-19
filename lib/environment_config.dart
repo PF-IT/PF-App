@@ -3,7 +3,7 @@ import 'dart:io';
 class EnvironmentConfig {
   // APP NAME
   static const APP_NAME =
-      String.fromEnvironment('DEFINEARG_APP_NAME', defaultValue: 'PolyAssoc');
+      String.fromEnvironment('DEFINEARG_APP_NAME', defaultValue: 'PF');
 
   // APP SUFFIX
   static const APP_SUFFIX = String.fromEnvironment('DEFINEARG_APP_SUFFIX');

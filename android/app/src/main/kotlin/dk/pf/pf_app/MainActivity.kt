@@ -1,4 +1,4 @@
-package dk.pf.pf_app
+package dk.pf.app
 
 import io.flutter.embedding.android.FlutterActivity
 

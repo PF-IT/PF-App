@@ -1,6 +1,6 @@
 {
-    "name": "pf_app",
-    "short_name": "pf_app",
+    "name": "pf app",
+    "short_name": "pf app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

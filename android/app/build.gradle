@@ -22,7 +22,7 @@ if (flutterVersionName == null) {
 }
 
 def dartEnvironmentVariables = [
-        DEFINEARG_APP_NAME: 'PolyAssoc',
+        DEFINEARG_APP_NAME: 'PF',
         DEFINEARG_APP_SUFFIX: null,
         DEFINEARG_APP_OAS_URL: null,
         DEFINEARG_APP_ENVIRONMENT: 'development'
@@ -53,7 +53,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "dk.pf.pf_app"
+        applicationId "dk.pf.app"
         applicationIdSuffix dartEnvironmentVariables.DEFINEARG_APP_SUFFIX
         minSdkVersion 16
         targetSdkVersion 28
