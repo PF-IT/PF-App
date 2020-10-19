@@ -3,4 +3,8 @@ osx_image: xcode8.3
 install:
   - bundle install
 script:
+  - cd ios
+  - fastlane beta
+  - cd ..
+  - cd android
   - fastlane beta
