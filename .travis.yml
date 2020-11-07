@@ -1,5 +1,5 @@
 language: flutter
-osx_image: xcode12.1
+osx_image: xcode12.2
 install:
 - bundle install
 
