@@ -1,48 +1,19 @@
 language: swift
 osx_image: xcode12.2
-
-# after_script:
-# - "./scripts/remove-key.sh"
-# before_script:
-# - openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.cer.enc
-#   -d -a -out scripts/certs/Certificates.cer
-# - openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.p12.enc
-#   -d -a -out scripts/certs/Certificates.p12
-# - openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/profile/PF-APP.mobileprovision.enc
-#   -d -a -out scripts/profile/PF-APP.mobileprovision
-# - "./scripts/add-key.sh"
-
 env:
   global:
-  #- PROFILE_NAME="PF-APP"
-  #- ARCHIVE_NAME="PF-APP-ARCHIVE"
-  #- IPA="Runner"
-  #- DEVELOPER_NAME="Apple Distribution: Polyteknisk Forening (76ZST5YX2G)"
   - secure: JeoOtN3fyIuSK63oDml8pUBpPLpUw9h2h8TNG0NfSYrlCld8ChOAGPTOanTpkAY6OCkh+D1t1a7YsNNQ4dwc50s/qwpcPki/Bj+RQAHP0owYOYNzjtc1GddLKS9gOCPHIqyFS/jlnQCkp2ynF3NbGUU90uLZwqZ+mBJESBGMBkAWiCdo40BmNQ+ZuoRDACTKsFPKuP2GNQDpB8PK/HtYalRFHi9/hJqlAuVrpSJoBwQdA2CqchG9QBJmgHgt8YPIdOW8TmrxzeLUjP65mHqR/NjTxWVauQ1vsnt3vm8hhqbyQ6zqiiO7c2jVHAqYJl+y5mWsu/+fD+eMcJF1Kls0VP6OU4hPwpd10LEpBhU7m6iqOfCcnxexBbdh/agp3lY2BHVDVHU5//G7HROX1IMedolQ0JiDrRjirtvidZmF/jLqtTqfrb4zuq4/EALGKFPPG82aD+wbXy0JpSg8kalot3pDQC5LTZRaUBetsu9G6UIx8VcCAU4uDCQQgDAEqe0xGoONXWhxYym4vA8ukrZAZMFehlCVxIgb942uBr0E3G5x0tJNPQbaDUAe5FFoykKy8RNZZZht3BDEdqfP/fhsEYTh1kXerOJ8ZdVdPtAqKpboHPa5cX5kcGDFa9NrSQU40lM/49P+KeWDIVn8M6gYRv4heerVJ2al/GlOU8EdBVo=
   - secure: E8A4kh5sDTfoKXe2jb8wudLZuL/bamI1WONNQho4DGmYBL2Vw5aNCNOoshgljew6RRNbu2IMcaUCLTtyLSZMpEIRafQQJEDCNrh8hD0rpfzegwQa6Esj4etCYr2WG4ndTOvw+rJmqjsk5Qe+Te1SB7CiPCx9ZKXv2W4SuiuiDwogLnfuKe88uMFzzQH4VycNolCCHri2/vAv0ay4ErMJbT7jpti0zr3wzbXCPhOvCyJirFsks2e0TMrg1HKvpO1t+jhDCdqttqMGwx1+N5UxO5ZsfxAeee9pubekgt5v8mdqj3THqoZloHgcG9Jl9pG0LeayiHz3SslNHIqNt7roAni5d5Cu8pDxVL0XWdV5NieaL+HOV5kwYMs99GT0jiPccjYSFmZZ3emhwXzx50MACzErBj8haQV2QjivYqkJwsfTVsaNa2NDa3ADBQtDxGw4WOeronABg7dWw8ocO+eFJsFIjyd1wV7lcGtx5fSkUEm2HaZ85Vj4Iu3+XIHxN5hf6W/exnvV9nFzsX2fNk1vj+9QJlm+CbT+fWncbDMmu7CY5a8J04B8ilJDbCgKA8897eEMKjzhbzvsLsE+Yagb+Mvp3EzSlqz+4LW+KOV54G8hEh86I2bU4BC40BlPJ0yT45MDWrTxLNRsactEHv37FQeXPQqPhJulQZ3OSGLuBeQ=
   - secure: ouM4rvxLRWOjlWA/vhTfaQoILiRkjCeVPvOgW+n099NrX94GrpviLh1MQnWMQXav/OdVECevyzsmaHpmdrJYtya/N0siCvNrGu7vn+83iNk6TXH+H7sYAVpnrzO3BgOhIhoZKdUQMNhgqcfHCInv5QvsAkCeGSS/GTuBjenXKKV8dfahhG5/0+Zneg9PALCDxDA66uKKqAMtakb9kI7uVJgBvWIufu+dZQRt5HoKECiwuZwBwkhguKYuSyXTy8xCGmdwKXH+ZWoDNpjA/GrsXD2OG84T56ZVUkfo8OZc21ps/Kk9FJxt+ml+AieJKHCuq+3ezLUaMiO3li65ecyf8x56TDfXEv1TPYrWm8yZxKH1FZGJlJmU2NqenWtmHumExi9UdzWsP164kvhIU0g48c8nEWT/vYN81gko+ii9zZVEdb8lrRuHiM4Jc/DzZ3Dul+2JNAjiJryqEJzH3IM1Kv6lRLVexlAFWWd/lcAfhxrvWr/QDSWJq51LMp0feLKyId5eLKXenQohz5zBTj3K6FXopTn6T58qx8QZi4W08QbUWf/5xCvy9PhHI3FT6lpKhxlpLBjQo6uBh5Yg3+Ac5KtzEmiIODEVIvXYQ74BIZr7LgCATJZ9fOAb5pFKeLOzEwqzGazmYoYaWrbgg9PmglZE+ldbJApvwu3X0GSFcdk=
   - secure: aY7WRwHpmH1oXKfLywbOKIH6boE1nJyY+W8iJk5g7WljM0asgmm3T3FydVkBQ9X8rXltz5qeB7moZ3knwnap4Adi3YRrQZFGnfVVyDDKASEFGB8RnAj/mPo0X2NtnkmSJNEi0foZzZafbgePQzoePIeb2485BuZkfP1V2iDbRw5jCjGJGgTwLJwdDZtEpScTX2OErgP/A5gk5I7qv3lS2rlhg6ZLm2AygiEK/WcpM2jyPOOC1xk6XrMObAcZF2jv4w73mMOx1KJ3bI/b/m6mZK+dQsfYjmJQ6dbMwLqn50jkdqbpmWjgTlrAEI7TaiGKhpMRCQYKs2erPQcEzkFT8oN064haeE+RI6PTRQmfcTq/Lb2equRBkkI5n17bIZtS1hA8YHdo1OJjzyaa+Kk3KFMoh9qWvh93cjwqJvh9dCsCFwZqm/C1OoMjoEpBgcyiQ1dwCAMsPWhYQdahtWfSOGaSJU3SjiYflY7GbzvUHzmrSMtrGm362ACk+Z/fevmlTnJAEss3HrrfjpPwq+EeDwFh/SDJcsi4cN7wflEaEeA/z7TEyvDsUkvmZDadGlthTQ8HEQKQNTOlDYIvYtiR37uqPfu8kBfmcqDhbM56/6e4TIoJFhd+ETLwwb/uyJL+M6//UDHPyr0VYPfEkxCfD98o2G1yi6EEUuU2RmL6zEI=
-
+  - secure: 5a1D8cpSKg3FivmxNjuK2eIllNu6JJ7Zr9p/LTdvb8OglslvaWOTwuYOq6BCxNmE9Z+BbcGl+WkBZdzGasnsBOcZs2IpMQTI1NoTaljlTbcv58KAi4M5UIa45XdglNMYZoWlktq3c2NEp3ipLD+H/NytWlYt7qeI2dFHvS4Unu/to1/NrrLPpcc0sxFcvMtdCPlrwnVnzoMAimPI3fESVu7nj6wnyC9INKrkpVi5IILuxOJjjRAQ8yu65DCfcdjYl0LoIR5GDsEFiA8Orj1UQHXYKMRBorccShRpnXCJTzLhuO0eGHs9zTU9ONfZf/WHNOElD6zoWgWeJux/0wFQZYV6cqtFGEDwTu/qQpVWSlt0BL9X2MuYzPVeyZxHvz3NZJiEcIUWH4Tj22a0hPp4GPLXeygjTmTX7a5uKIUug8FOOau+3lb+gCNSwO5LD2g9m6tlHf1y+ZJxClxj+03k3jRQslVqdhSvhZYnwWbsXZ3QmhrHiSQJ9at6x6Pwh0ptj+kF8lGjezCLoQz+OkQ736+osBeHo87kungL8EKvKvO8FQWiNgm7LWQP9sZz/dG2RWPEKcUKJdZGyAbifZzDxvrD/gIaJYJY/GPM4pl2MHcUoB8xlXLMhafox63vpoY1/quU247+OzRf6baYLCOrNl1v7pWoEAxdEqpKmQEkhuA=
 install:
 - git clone https://github.com/flutter/flutter.git -b stable
 - export PATH=$PWD/flutter/bin:$PATH
 - cd ios
 - bundle install
 - cd ../
-
 script:
 - flutter build appbundle
 - cd ios
 - bundle exec fastlane beta
-
-# install:
-# - bundle install
-# - git clone https://github.com/flutter/flutter.git -b stable
-# - export PATH=$PWD/flutter/bin:$PATH
-# - gem which cocoapods
-# - sudo gem install cocoapods
-# - flutter doctor
-
-# script:
-# - flutter build ios
-# - "./scripts/build.sh"
