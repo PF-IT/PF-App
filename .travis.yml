@@ -28,15 +28,14 @@ env:
 install:
 - git clone https://github.com/flutter/flutter.git -b stable
 - export PATH=$PWD/flutter/bin:$PATH
-before_script:
+- sudo gem install cocoapods
 - flutter doctor
+
 script:
 # - cd ios
 # - fastlane beta
 # - cd ../
-- sudo gem install cocoapods
 - flutter build ios
-- pod setup
 - "./scripts/build.sh"
 # - cd ..
 # - cd android

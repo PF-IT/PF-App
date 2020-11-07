@@ -6,7 +6,7 @@ fi
 security list-keychains -s ios-build.keychain
 rm ~/Library/MobileDevice/Provisioning\ Profiles/$PROFILE_NAME.mobileprovision 
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles/
-cp ./scripts/profile/$PROFILE_NAME.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+cp ./ios/scripts/profile/$PROFILE_NAME.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 echo "*********************"
 echo "*     Archiving     *"
 echo "*********************"
