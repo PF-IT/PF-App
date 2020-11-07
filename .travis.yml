@@ -24,14 +24,12 @@ env:
   - secure: aY7WRwHpmH1oXKfLywbOKIH6boE1nJyY+W8iJk5g7WljM0asgmm3T3FydVkBQ9X8rXltz5qeB7moZ3knwnap4Adi3YRrQZFGnfVVyDDKASEFGB8RnAj/mPo0X2NtnkmSJNEi0foZzZafbgePQzoePIeb2485BuZkfP1V2iDbRw5jCjGJGgTwLJwdDZtEpScTX2OErgP/A5gk5I7qv3lS2rlhg6ZLm2AygiEK/WcpM2jyPOOC1xk6XrMObAcZF2jv4w73mMOx1KJ3bI/b/m6mZK+dQsfYjmJQ6dbMwLqn50jkdqbpmWjgTlrAEI7TaiGKhpMRCQYKs2erPQcEzkFT8oN064haeE+RI6PTRQmfcTq/Lb2equRBkkI5n17bIZtS1hA8YHdo1OJjzyaa+Kk3KFMoh9qWvh93cjwqJvh9dCsCFwZqm/C1OoMjoEpBgcyiQ1dwCAMsPWhYQdahtWfSOGaSJU3SjiYflY7GbzvUHzmrSMtrGm362ACk+Z/fevmlTnJAEss3HrrfjpPwq+EeDwFh/SDJcsi4cN7wflEaEeA/z7TEyvDsUkvmZDadGlthTQ8HEQKQNTOlDYIvYtiR37uqPfu8kBfmcqDhbM56/6e4TIoJFhd+ETLwwb/uyJL+M6//UDHPyr0VYPfEkxCfD98o2G1yi6EEUuU2RmL6zEI=
 
 install:
+- bundle install
 - git clone https://github.com/flutter/flutter.git -b stable
 - export PATH=$PWD/flutter/bin:$PATH
-- cd ./ios
+- gem which cocoapods
 - sudo gem install cocoapods
-- bundle install
-- pod install
 - flutter doctor
-- cd ../
 
 script:
 # - cd ios
