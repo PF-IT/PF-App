@@ -29,6 +29,7 @@ install:
 - cd ../
 
 script:
+- flutter build appbundle
 - cd ios
 - bundle exec fastlane beta
 
