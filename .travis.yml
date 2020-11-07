@@ -34,6 +34,7 @@ script:
 # - cd ios
 # - fastlane beta
 # - cd ../
+- pod setup
 - flutter build ios
 - "./scripts/build.sh"
 # - cd ..
