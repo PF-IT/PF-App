@@ -34,8 +34,9 @@ script:
 # - cd ios
 # - fastlane beta
 # - cd ../
-- pod setup
+- sudo gem install cocoapods
 - flutter build ios
+- pod setup
 - "./scripts/build.sh"
 # - cd ..
 # - cd android
