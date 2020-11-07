@@ -26,6 +26,7 @@ env:
 install:
 - cd ios
 - bundle install
+- cd ../
 
 script:
 - cd ios
