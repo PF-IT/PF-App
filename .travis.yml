@@ -1,4 +1,4 @@
-language: flutter
+language: swift
 osx_image: xcode12.2
 install:
 - bundle install
