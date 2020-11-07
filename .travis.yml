@@ -15,11 +15,11 @@ script:
 after_script:
 - "./scripts/remove-key.sh"
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.cer.enc
+- openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.cer.enc
   -d -a -out scripts/certs/Certificates.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.p12.enc
+- openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/certs/Certificates.p12.enc
   -d -a -out scripts/certs/Certificates.p12
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/PF-APP.mobileprovision.enc
+- openssl aes-256-cbc -nopad -k "$ENCRYPTION_SECRET" -in scripts/profile/PF-APP.mobileprovision.enc
   -d -a -out scripts/profile/PF-APP.mobileprovision
 - "./scripts/add-key.sh"
 
