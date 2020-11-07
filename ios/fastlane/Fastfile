@@ -28,7 +28,6 @@ platform :ios do
     desc "Push Beta build to App Store"
     lane :beta do
         cert
-        sigh
         build_app(scheme: "Runner", workspace: "Runner.xcworkspace")
     end
 end
