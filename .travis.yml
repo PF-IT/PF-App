@@ -1,5 +1,5 @@
-language: objective-c
-osx_image: xcode8.3
+language: flutter
+osx_image: xcode12.1
 install:
 - bundle install
 
