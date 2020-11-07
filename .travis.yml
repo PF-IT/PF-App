@@ -25,18 +25,17 @@ env:
 
 install:
 - bundle install
-- git clone https://github.com/flutter/flutter.git -b stable
-- export PATH=$PWD/flutter/bin:$PATH
-- gem which cocoapods
-- sudo gem install cocoapods
-- flutter doctor
+- cd ios
+- fastlane beta
 
-script:
-# - cd ios
-# - fastlane beta
-# - cd ../
-- flutter build ios
-- "./scripts/build.sh"
-# - cd ..
-# - cd android
-# - fastlane beta
+# install:
+# - bundle install
+# - git clone https://github.com/flutter/flutter.git -b stable
+# - export PATH=$PWD/flutter/bin:$PATH
+# - gem which cocoapods
+# - sudo gem install cocoapods
+# - flutter doctor
+
+# script:
+# - flutter build ios
+# - "./scripts/build.sh"
