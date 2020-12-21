@@ -39,7 +39,7 @@ end
 platform :ios do
   desc "Push a new beta release build to TestFlight"
   lane :beta_test do
-    get_certificates # cert
+    get_certificates(username: "starostka@pf.dk") # cert
     get_provisioning_profile(force: true) # sigh
     build_app(scheme: "Runner", include_bitcode: true)
   end

@@ -11,4 +11,4 @@ install:
 - cd ../
 script:
 - cd ios
-- bundle exec fastlane beta_test
+- fastlane ios beta_test
