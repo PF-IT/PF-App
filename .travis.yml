@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode12.2
+osx_image: xcode12.3
 env:
   global:
   - secure: UJpvdecDnRrx7JsMrCf9JAmBzF6/XUxSjUkXdgsikSKx47ov/sG1n05RprURHPSwj4D2GUvzzmNUBUdoZv5bDocHgMaQ7wLGmqtp7fxYPvtMOmo2bIO730Byn3gaJvhbiGk+0DeFHdpWQMckSWoK+pp8GD2TOlgJwK8wy83I2EJkBrDEMeQIagXx6A80Ksj7GjnmPBl6t+7gPiuLSjiGR3jxc8q5Md+Y0nLZ9VWQNu2o64CD0x2uKmTd58S+qMXvQsbP52QFUUWapiT+hgvma5FC7bilq67LZsDmyhVOEq7jdLuhBvFUjnbBMSOKnJhouL1T8u1qLaL8V3PnQMWeZ47K0WVXKCGKODaSXbdc4WDFPy+JxeS9/AyLFidbppX25PQ6PkfiEuKopNRzAPKk4pTuVZiv1WX+soq/Je3sy+8it12oMqBf/lwlDE4H//+MysLnA5wSYSDm12+8kScjSmaCbttKT7S40GLWUuvfZPd6ECHr/DNo6VHkYKqoJNoMl3UBSZQhZA/ZXSlFVgVq0vlZZcA1d2ZyJdl1DPm2qpo/7InDQSuImmZJYJlLtHrrac3/QOVZvP45fwCSUJRfR+QragFnTuIewI4WqFgnQBqHR4ELs4HzsYNwCnnz01ylHOjyOsrENflZ2FQfFeXrYyBBxDn0hxrXgsBsJmnUsEM=
@@ -13,4 +13,4 @@ install:
 script:
 - flutter build appbundle
 - cd ios
-- bundle exec fastlane beta
+- bundle exec fastlane beta_test

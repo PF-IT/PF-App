@@ -25,7 +25,7 @@ Push a new release build to the App Store
 ```
 fastlane ios beta
 ```
-Push Beta build to App Store
+Push a new beta release build to TestFlight
 
 ----
 

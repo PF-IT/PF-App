@@ -14,21 +14,40 @@
 # update_fastlane
 
 default_platform(:ios)
-xcversion(version: "12.2")
 
 platform :ios do
   desc "Push a new release build to the App Store"
   lane :release do
+    get_certificates
+    get_provisioning_profile(force: true)
     build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
-    upload_to_app_store(skip_metadata: true, skip_screenshots: false)
+    upload_to_app_store
   end
 end
 
 platform :ios do
-    desc "Push Beta build to App Store"
-    lane :beta do
-        cert
-        sigh(force: true)
-        build_app(scheme: "Runner", workspace: "Runner.xcworkspace")
-    end
+  desc "Push a new beta release build to TestFlight"
+  lane :beta do
+    get_certificates # cert
+    get_provisioning_profile(force: true) # sigh
+    build_app(scheme: "Runner", include_bitcode: true)
+    upload_to_testflight
+  end
+end
+
+# same as beta but does not send to testflight
+platform :ios do
+  desc "Push a new beta release build to TestFlight"
+  lane :beta_test do
+    get_certificates # cert
+    get_provisioning_profile(force: true) # sigh
+    build_app(scheme: "Runner", include_bitcode: true)
+  end
+end
+
+platform :ios do
+  desc "Test ios release"
+  lane :tests do
+  run_tests(scheme: "Runner",devices: ["iPhone 6s", "iPad Air", "iPhone 12"])
+  end
 end
