@@ -1,5 +1,3 @@
-setup_travis
-
 # This file contains the fastlane.tools configuration
 # You can find the documentation at https://docs.fastlane.tools
 #
@@ -32,18 +30,8 @@ platform :ios do
   lane :beta do
     get_certificates # cert
     get_provisioning_profile(force: true) # sigh
-    build_app(scheme: "Runner", include_bitcode: true)
-    upload_to_testflight
-  end
-end
-
-# same as beta but does not send to testflight
-platform :ios do
-  desc "Push a new beta release build to TestFlight"
-  lane :beta_test do
-    get_certificates(username: "starostka@pf.dk") # cert
-    get_provisioning_profile(force: true) # sigh
-    build_app(scheme: "Runner", include_bitcode: true)
+    build_app(scheme: "Runner")
+    upload_to_testflight(skip_waiting_for_build_processing: true, apple_id: "1532589874")
   end
 end
 
