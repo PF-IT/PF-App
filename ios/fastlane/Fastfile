@@ -18,9 +18,8 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new release build to the App Store"
   lane :release do
-    get_certificates
-    get_provisioning_profile(force: true)
-    build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    match(type: "appstore", readonly: is_ci)
+    build_app(scheme: "Runner")
     upload_to_app_store
   end
 end
@@ -28,16 +27,8 @@ end
 platform :ios do
   desc "Push a new beta release build to TestFlight"
   lane :beta do
-    get_certificates # cert
-    get_provisioning_profile(force: true) # sigh
-    build_app(scheme: "Runner")
+    match(type: "appstore", readonly: is_ci)
+    build_ios_app(scheme: "Runner", export_method: "app-store", clean: true)
     upload_to_testflight(skip_waiting_for_build_processing: true, apple_id: "1532589874")
-  end
-end
-
-platform :ios do
-  desc "Test ios release"
-  lane :tests do
-  run_tests(scheme: "Runner",devices: ["iPhone 6s", "iPad Air", "iPhone 12"])
   end
 end
