@@ -15,6 +15,7 @@ jobs:
         - sudo gem install fastlane -NV
         - npm install --global yarn
         - npm install -g @ionic/cli
+        - npm --version   # display npm version to check for npx
     - stage: build        # build ios and android
       name: "build"
       script:
