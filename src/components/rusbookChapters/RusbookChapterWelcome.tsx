@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
-import { IonSlides, IonSlide, IonContent, IonThumbnail, IonImg } from '@ionic/react';
-import Swiper from 'swiper';
-import './RusbookChapter_Welcome.css';
+import { IonSlides, IonSlide, IonImg } from '@ionic/react';
+import './RusbookChapterWelcome.css';
 
 interface ImageProps {
     src: string;
@@ -19,7 +18,7 @@ const slideOpts = {
     speed: 400,
 };
 
-export const RusbookChapter_Welcome: React.FC = () => {
+export const RusbookChapterWelcome: React.FC = () => {
     const slider = useRef<HTMLIonSlidesElement>(null); // !!! remember the type like seen here! <>
     const [slideIndex, setSlideIndex] = useState<number>(0);
     
@@ -38,14 +37,14 @@ export const RusbookChapter_Welcome: React.FC = () => {
             </IonSlide>
             <IonSlide>
                 <div>
-                <h1>It is currently a work-in-progress.. 🤓</h1>
+                <h1>It is currently a work-in-progress.. <span role="img" aria-label="smart-emoji">🤓</span></h1>
                 <IonImg src={items[1].src}/>
                 <p>Page: {slideIndex}</p>
                 </div>
             </IonSlide>
             <IonSlide>
                 <div>
-                <h1>But we hope you'll stick around. 😁</h1>
+                <h1>But we hope you'll stick around. <span role="img" aria-label="happy-emoji">😁</span></h1>
                 <IonImg src={items[2].src}/>
                 <p>Page: {slideIndex}</p>
                 </div>

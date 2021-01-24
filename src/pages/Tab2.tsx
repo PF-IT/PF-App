@@ -1,9 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSearchbar, IonFooter, IonRefresher, IonItemSliding, IonItemOption, IonItem, IonRefresherContent, IonItemOptions, IonLabel, IonList, IonAlert, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonIcon, IonButton } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonRefresher, IonRefresherContent, IonList, IonAlert, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonButton } from '@ionic/react';
 import { RefresherEventDetail } from '@ionic/core';
-import { chevronDownCircleOutline } from 'ionicons/icons';
-import ExploreContainer from '../components/ExploreContainer';
-import { RusbookChapter_Welcome } from '../components/rusbookChapters/RusbookChapter_Welcome';
+import { RusbookChapterWelcome } from '../components/rusbookChapters/RusbookChapterWelcome';
 import './Tab2.css';
 
 const Tab2: React.FC = () => {
@@ -57,7 +55,7 @@ const Tab2: React.FC = () => {
               <IonButton className="ion-padding" onClick={() => {displayChapter ? setDisplayChapter(false) : setDisplayChapter(true)}}>
                 {displayChapter ? <strong>Close</strong> : <strong>Expand</strong>}
               </IonButton>
-              {displayChapter && <RusbookChapter_Welcome/>}
+              {displayChapter && <RusbookChapterWelcome/>}
             </IonCardHeader>
           </IonCard>
         </IonList>

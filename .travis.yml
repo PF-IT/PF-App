@@ -3,36 +3,29 @@ osx_image: xcode12.2
 
 stage:
   # - foundation
-  - build
-  - ios
+  - testflight
+  # - ios
   # - android
 
 jobs:
   include:
-    # - stage: foundation   # setup software needed to build and deploy
-    #   name: "foundation"
-    #   script:
-    #     - sudo gem install fastlane -NV
-    #     - npm install --global yarn
-    #     - npm install -g @ionic/cli
-    #     - echo "foundation process done!"
-    - stage: build        # build ios and android
-      name: "build"
+    - stage: testflight        # build ios and android
+      name: "testfligt"
       script:
         - sudo gem install fastlane -NV
         - npm install --global yarn
         - npm install -g @ionic/cli
         - echo "foundation process done!"
+        # foundation complete
         - npm --version   # display npm version to check for npx
         - yarn install    # install all dependencies
         - yarn run build
         - npx cap copy ios
         - npx cap copy android
         - echo "ios and android built!"
-    - stage: ios
-      name: "deploy ios to testflight"
-      script:
+        # built ios and android projects
         - cd ios/App
         - sudo bundle update fastlane
         - sudo bundle install
         - bundle exec fastlane beta # deploy to testflight
+        # app deployed to testflight
