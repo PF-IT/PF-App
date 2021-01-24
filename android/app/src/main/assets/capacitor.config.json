@@ -1,0 +1,13 @@
+{
+  "appId": "dk.pf.app",
+  "appName": "pf-app",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "build",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
