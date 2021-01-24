@@ -1,16 +1,22 @@
-language: node_js
-node_js:
-  - "12"
+language: objective-c
+osx_image: xcode12.2
 
 stage:
+  - foundation
   - build
   - ios
   # - android
 
 jobs:
   include:
-    - stage: build
-      name: "build android and ios"
+    - stage: foundation   # setup software needed to build and deploy
+      name: "foundation"
+      script:
+        - sudo gem install fastlane -NV
+        - npm install --global yarn
+        - npm install -g @ionic/cli
+    - stage: build        # build ios and android
+      name: "build"
       script:
         - yarn run build
         - npx cap copy ios
@@ -18,3 +24,8 @@ jobs:
         - echo "ios and android built!"
     - stage: ios
       name: "deploy ios to testflight"
+      script:
+        - cd ios/App
+        - sudo bundle update fastlane
+        - sudo bundle install
+        - bundle exec fastlane beta # deploy to testflight

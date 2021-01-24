@@ -1,5 +1,5 @@
 {
-  "appId": "dk.pf.app",
+  "appId": "dk.pf.application",
   "appName": "Polyteknisk Forening",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
