@@ -2,23 +2,28 @@ language: objective-c
 osx_image: xcode12.2
 
 stage:
-  - foundation
+  # - foundation
   - build
   - ios
   # - android
 
 jobs:
   include:
-    - stage: foundation   # setup software needed to build and deploy
-      name: "foundation"
+    # - stage: foundation   # setup software needed to build and deploy
+    #   name: "foundation"
+    #   script:
+    #     - sudo gem install fastlane -NV
+    #     - npm install --global yarn
+    #     - npm install -g @ionic/cli
+    #     - echo "foundation process done!"
+    - stage: build        # build ios and android
+      name: "build"
       script:
         - sudo gem install fastlane -NV
         - npm install --global yarn
         - npm install -g @ionic/cli
+        - echo "foundation process done!"
         - npm --version   # display npm version to check for npx
-    - stage: build        # build ios and android
-      name: "build"
-      script:
         - yarn install    # install all dependencies
         - yarn run build
         - npx cap copy ios
