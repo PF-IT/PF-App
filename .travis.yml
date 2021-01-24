@@ -1,1 +1,20 @@
+language: node_js
+node_js:
+  - "12"
 
+stage:
+  - build
+  - ios
+  # - android
+
+jobs:
+  include:
+    - stage: build
+      name: "build android and ios"
+      script:
+        - yarn run build
+        - npx cap copy ios
+        - npx cap copy android
+        - echo "ios and android built!"
+    - stage: ios
+      name: "deploy ios to testflight"
