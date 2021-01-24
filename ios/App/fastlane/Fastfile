@@ -12,13 +12,30 @@
 
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
+setup_travis
 
 default_platform(:ios)
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
-  lane :beta do
-    build_app(workspace: "App.xcworkspace", scheme: "App")
-    upload_to_testflight
+  lane :betaApi do
+    cert
+    app_store_connect_api_key(
+      key_id: "C7JCWZ8MV6",
+      issuer_id: "69a6de96-68a3-47e3-e053-5b8c7c11a4d1",
+      key_filepath: "../../ConnectApiAuthKey.p8", # the private key is encrypted you little sneaky fella (must be placed in top-level)
+      duration: 1200, # optional
+      in_house: false, # optional but may be required if using match/sigh
+    )
+    build_app(scheme: "App", export_xcargs: "-allowProvisioningUpdates")
+    pilot
   end
 end
+
+# platform :ios do
+#   desc "Push a new beta release build to TestFlight (ONLY WORKS WITH PC WHERE YOU CAN LOGIN)"
+#   lane :beta do
+#     build_app
+#     upload_to_testflight
+#   end
+# end

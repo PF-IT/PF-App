@@ -1,31 +1,32 @@
 language: objective-c
 osx_image: xcode12.2
-
 stage:
-  # - foundation
-  - testflight
-  # - ios
-  # - android
-
+- testflight
 jobs:
   include:
-    - stage: testflight        # build ios and android
-      name: "testfligt"
-      script:
-        - sudo gem install fastlane -NV
-        - npm install --global yarn
-        - npm install -g @ionic/cli
-        - echo "foundation process done!"
-        # foundation complete
-        - npm --version   # display npm version to check for npx
-        - yarn install    # install all dependencies
-        - yarn run build
-        - npx cap copy ios
-        - npx cap copy android
-        - echo "ios and android built!"
-        # built ios and android projects
-        - cd ios/App
-        - sudo bundle update fastlane
-        - sudo bundle install
-        - bundle exec fastlane beta # deploy to testflight
-        # app deployed to testflight
+  - stage: testflight
+    name: testfligt
+    script:
+    - sudo gem install fastlane -NV
+    - npm install --global yarn
+    - npm install -g @ionic/cli
+    - echo "foundation process done!"
+    - npm --version
+    - yarn install
+    - yarn run build
+    - npx cap copy ios
+    - npx cap copy android
+    - echo "ios and android built!"
+    - cd ios/App
+    - gem install cocoapods --pre
+    - pod install --repo-update
+    - sudo bundle install
+    - sudo bundle update fastlane
+    - bundle exec fastlane beta
+    - echo "ios app deployed to testflight using fastlane"
+env:
+  global:
+    secure: mQNWJp+GrY7k16WDLLCSQsZJX23/MnHM8rE67AjK4EycKN1UdxiefqmYg9YvqneUxSo8Mzu6cMmPhQFLxMNrsx7Io/oyOaPBwn+hgxsnfKXdMKyjc0amq6aO6g6G4OyZA7FjRF6B37N6EUAC6OBExWEGkKCpR+WmrGYpD0nmHs7/Sb7rNKUfK4aJHODtELT2YHbAbJhJkJKfHmwKEgOl48oQdB2EnBfV99jZSuvwXOkYy0qngMK4xr6X9TVrRnxMhpqpKv+yf/RxPkU6AApgPCLdjWefk2a9xLyi8BNL5r79UDc9CkpwKsBjOfaOIGXcGC8VJxoQvVnf4i3lP/RCC5OqPCa0Zp/nnHZ0MEENzj4HOmGvJ52hMSpcbDOI2HOGOuicqUjlC1vqVdskvMksGkMa4k23P+NOV75khCHoigZx45uPid9lxmopahuXqWXJlVUSzb5le9l/LmAanZSVr4aqrRzEpLDPHjrQOTnqWQmBKxH1a0so423mApiNPYsk+rnaDKrxGksTd1foQM2tnWtcTfO3I0m8htXqbLMTnkakEVAczz8lLamx7f75bJExzKXHXABZz6DIau4mstAAZH/hLOVWD5RshTxm02xN8pRt7jzbv+4Vym266BmfXbA2gSWuaf/QbRAnHTCfgv3DkYBS+dBU6PObBlBS1p9PKFA=
+before_install:
+- openssl aes-256-cbc -K $encrypted_7b55046bdc61_key -iv $encrypted_7b55046bdc61_iv
+  -in ConnectApiAuthKey.p8.enc -out ConnectApiAuthKey.p8 -d
