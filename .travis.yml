@@ -18,6 +18,7 @@ jobs:
     - stage: build        # build ios and android
       name: "build"
       script:
+        - yarn install    # install all dependencies
         - yarn run build
         - npx cap copy ios
         - npx cap copy android
