@@ -1,2 +1,2 @@
 # Develop
-yarn run start (Initiate Expo client)
+ expo start - alt. yarn run start (Initiate Expo client)
