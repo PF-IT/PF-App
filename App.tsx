@@ -5,12 +5,11 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Button, Divider, IconRegistry, Layout, Text } from '@ui-kitten/components';
 
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { StyleSheet } from 'react-native';
 
 import useCachedResources from './hooks/useCachedResources';
-import { AppNavigator } from './navigation/Navigator';
+import { AppNavigator } from './components/navigation/Navigator';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 export default function App() {
