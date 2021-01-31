@@ -3,11 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigation, BottomNavigationTab, Button, Divider, Layout, Text } from '@ui-kitten/components';
 import { createStackNavigator } from '@react-navigation/stack';
-import { RusbookScreen } from '../screens/Rusbook';
-import RusWelcome from '../screens/rusbook/RusWelcomeScreen';
-import RusPolytekniskForening from '../screens/rusbook/RusPolytekniskForening';
-import { AboutScreen } from '../screens/About';
-import { HomeStackScreen } from '../screens/Home';
+import { RusbookScreen } from '../../screens/Rusbook';
+import RusWelcome from '../../screens/rusbook/RusWelcomeScreen';
+import RusPolytekniskForening from '../../screens/rusbook/RusPolytekniskForening';
+import { AboutScreen } from '../../screens/About';
+import { HomeStackScreen } from '../../screens/Home';
 
 // next should stay in Navigator.tsx
 const { Navigator, Screen } = createBottomTabNavigator();
