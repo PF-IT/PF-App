@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import useSWR from "swr";
 import { graphql_fetcher } from "./api";
-import { fetchBasicToken, getBasicToken, getUserToken, removeUserToken, setUserToken } from "./SecureTokenExpo";
+import { fetchBasicToken, getBasicToken, getUserToken, removeUserToken, setBasicToken, setUserToken } from "./SecureTokenExpo";
 
 // create a global auth reference to get access to auth actions outside components tree
 export const AuthRef = React.createRef<AuthContextActions>()
@@ -37,18 +37,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Explanation: the side effect is to provide the app with an initial basic role state
     React.useEffect(() => {
-        const initState = async () => {
-            console.log("start auth");
-            try {
+        const initState = async () => {            try {
                 const basicAuthToken = await getBasicToken()
                 if (basicAuthToken) {
-                    console.log("got token from store:" + basicAuthToken);
+                    console.log("basicToken retrieved from SecureStore: " + basicAuthToken);
                     dispatch( { type: 'SIGN_IN_BASIC', basicAuthToken: basicAuthToken } );
                 } else {
                     const freshToken = await fetchBasicToken()
                     if (freshToken) {
-                        console.log("got new basicToken:" + freshToken);
+                        console.log("Fetched new basicToken" + freshToken);
                         dispatch( {type: 'SIGN_IN_BASIC', basicAuthToken: freshToken} )
+                        await setBasicToken(freshToken)
                     }
                 }
                 const authToken = await getUserToken()
