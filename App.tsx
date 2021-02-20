@@ -8,8 +8,16 @@ import useCachedResources from './hooks/useCachedResources';
 import { AppNavigator } from './components/navigation/Navigator';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { AuthProvider } from './utils/Auth';
+import { ThemeContext } from './design/theme-context';
 
 export default function App() {
+  //Theming
+  const [theme, setTheme] = React.useState('light');
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+  };
+  
   const isLoadingComplete = useCachedResources();
   // const colorScheme = useColorScheme();
 
@@ -19,13 +27,14 @@ export default function App() {
     return (
       <>
         <IconRegistry icons={EvaIconsPack} />
-        <ApplicationProvider {...eva} theme={eva.light}>
-          <AuthProvider>
-            <StatusBar style='auto' />
-            <AppNavigator />
-          </AuthProvider>
-        </ApplicationProvider>
-
+          <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <ApplicationProvider {...eva} theme={eva.light}>
+              <AuthProvider>
+                <StatusBar style='auto' />
+                <AppNavigator />
+              </AuthProvider>
+            </ApplicationProvider>
+        </ThemeContext.Provider>
       </>
     );
   }

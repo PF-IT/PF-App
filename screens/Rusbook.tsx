@@ -66,7 +66,7 @@ export const RusbookScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     contentContainer: {
         // flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     rusbookButton: {
         margin: 10,

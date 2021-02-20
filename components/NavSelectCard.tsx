@@ -6,7 +6,7 @@ import { FlexStyleProps, RenderProp } from '@ui-kitten/components/devsupport';
 
 const Header = (props: any) => (
     <View {...props} style={[props.style, styles.headerContainer]}>
-        <Text category='h1'>Header</Text>
+        <Text category='h4' style={{ color: 'white' }}>{props.title}</Text>
     </View>
 );
 
@@ -28,7 +28,9 @@ type NavSelectCardProps = {
 export const NavSelectCard = (props: NavSelectCardProps) => {
 
     return (
-        <Card onPress={() => props.navigation.navigate(props.route)} style={styles.card} footer={() => <Footer title={props.title}/>}>
+        <Card onPress={() => props.navigation.navigate(props.route)} style={styles.card} header={() => <Header title={props.title}/>} 
+        // footer={() => <Footer title={props.title}/>}
+        >
             <View style={styles.content}>
                 <Avatar style={styles.avatar} size='large' source={props.icon_src} />
                 <Text category='p2' style={styles.description}>{props.description}</Text>
@@ -39,7 +41,8 @@ export const NavSelectCard = (props: NavSelectCardProps) => {
 
 const styles = StyleSheet.create({
     headerContainer: {
-        backgroundColor: 'red',
+        backgroundColor: '#009FE3',
+        padding: 10,
     },
     content: {
         flexDirection: 'row',
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'blue', // TODO: get colors from theme
         padding: 10,
-        borderColor: 'blue',
+        borderColor: '#009FE3',
     },
     card: {
         marginLeft: 0,
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
         marginVertical: 4,
         marginHorizontal: 2,
         width: '85%',
-        borderColor: 'blue'
+        borderRadius: 0,
     },
     icon: {
         width: 20,
