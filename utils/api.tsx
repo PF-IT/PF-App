@@ -1,10 +1,20 @@
 // === API SECTION ===
 
-import request from "graphql-request";
+import {GraphQLClient, request } from "graphql-request";
 import useSWR from "swr";
 
+const endpoint = 'http://172.23.49.4:1337/graphql';
+const graphql_client = new GraphQLClient(endpoint);
+
+
 // fetcher functions
-export const graphql_fetcher = (query: any) => request('http://localhost:1337/graphql', query);
+export const graphqlFetchWithToken = (query:any, jwtToken:any ) => {
+    graphql_client.setHeader('authorization', `Bearer ${jwtToken}`);
+    return graphql_client.request(query);
+    // return request('http://172.23.49.4:1337/graphql', query, {Authorization: `Bearer ${jwtToken}`})
+}
+
+export const graphql_fetcher = (query: any) => request('http://172.23.49.4:1337/graphql', query);
 export const rest_fetcher = (url: any) => fetch(url).then(res => res.json());
 
 // TODO: should be saved in state somewhere!

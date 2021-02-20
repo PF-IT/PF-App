@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     card: {
         marginLeft: 0,
         marginRight: 0,
-        flex: 1,
         justifyContent: 'flex-start',
         marginVertical: 4,
         marginHorizontal: 2,
