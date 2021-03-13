@@ -3,7 +3,8 @@
 import {GraphQLClient, request } from "graphql-request";
 import useSWR from "swr";
 
-const endpoint = 'http://172.23.49.4:1337/graphql';
+export const baseurl = 'http://172.23.49.4:1337';
+export const endpoint = 'http://172.23.49.4:1337/graphql';
 const graphql_client = new GraphQLClient(endpoint);
 
 

@@ -43,12 +43,14 @@ export const RusbookScreen = ({ navigation }: any) => {
   // component to render navCard
   const renderRusbookNavCard = ({ item }: any) => {
     console.log(item);
+    console.log("The ID: " + item.id);
+    
 
     return (
       <NavSelectCard
         navigation={navigation}
-        route="RusbookChapter"
         title={item.Title}
+        chapter_id={item.id} // chapter id is being passed, such that chapter content can be fetched also
         icon_src={require("~/assets/images/favicon.png")} // get icon from backend
         description={item.Description}
       />

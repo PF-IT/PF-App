@@ -18,9 +18,8 @@ const Footer = (props: any) => (
 );
 
 type NavSelectCardProps = {
-    navigation: StackNavigationProp<any, string>,
-    route: string,
-    chapter_id: number,
+    navigation: StackNavigationProp<any, string>
+    chapter_id: string,
     title: string,
     icon_src: number | ImageURISource,
     description: string
@@ -29,7 +28,7 @@ type NavSelectCardProps = {
 export const NavSelectCard = (props: NavSelectCardProps) => {
 
     return (
-        <Card onPress={() => props.navigation.navigate(props.route)} style={styles.card} footer={() => <Footer title={props.title}/>}>
+        <Card onPress={() => props.navigation.navigate('RusbookChapter', {chapter_id: props.chapter_id})} style={styles.card} footer={() => <Footer title={props.title}/>}>
             <View style={styles.content}>
                 <Avatar style={styles.avatar} size='large' source={props.icon_src} />
                 <Text category='p2' style={styles.description}>{props.description}</Text>
