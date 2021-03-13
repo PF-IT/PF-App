@@ -1,17 +1,27 @@
-import 'react-native-gesture-handler'; // navigation dependencies
-import React from 'react';
+import "react-native-gesture-handler"; // navigation dependencies
+import React from "react";
 
-import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Button, Divider, IconRegistry, Layout, Text } from '@ui-kitten/components';
+import * as eva from "@eva-design/eva";
+import {
+  ApplicationProvider,
+  Button,
+  Divider,
+  IconRegistry,
+  Layout,
+  Text,
+} from "@ui-kitten/components";
 
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import useCachedResources from './hooks/useCachedResources';
-import { AppNavigator } from './navigation/Navigator';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import useCachedResources from "./hooks/useCachedResources";
+import { AppNavigator } from "./navigation/Navigator";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+
+import { default as theme } from "./PFThemeLight.json"; // <-- Import app theme
+import { default as mapping } from "./mapping.json"; // <-- Import app mapping
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -22,10 +32,14 @@ export default function App() {
   } else {
     return (
       <>
-      <IconRegistry icons={EvaIconsPack}/>
-      <ApplicationProvider {...eva} theme={eva.light}>
-        <AppNavigator/>
-      </ApplicationProvider>
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider
+          {...eva}
+          theme={{ ...eva.light, ...theme }}
+          customMapping={mapping}
+        >
+          <AppNavigator />
+        </ApplicationProvider>
       </>
     );
   }
@@ -34,7 +48,7 @@ export default function App() {
 const styles = StyleSheet.create({
   category: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
