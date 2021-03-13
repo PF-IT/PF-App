@@ -20,6 +20,7 @@ const Footer = (props: any) => (
 type NavSelectCardProps = {
     navigation: StackNavigationProp<any, string>,
     route: string,
+    chapter_id: number,
     title: string,
     icon_src: number | ImageURISource,
     description: string

@@ -1,55 +1,15 @@
 import React from "react";
 import useSWR from "swr";
-import { LogBox } from "react-native";
-import { SafeAreaView } from "react-native";
 import {
-  Button,
-  Divider,
-  Layout,
   Text,
-  TopNavigation,
-  BottomNavigation,
-  Icon,
-  ListItem,
   List,
 } from "@ui-kitten/components";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { StackNavigationState } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import RusWelcome from "./rusbook/RusWelcomeScreen";
-import RusPolytekniskForening from "./rusbook/RusPolytekniskForening";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet} from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
 import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
 import { useAuth } from "../utils/Auth";
 import { Content } from "native-base";
 
-// TODO: MAY MOVE THIS TO EALIER STAGE OF PROGRAM LIKE types.tsx or App.tsx
-type RusbookStackParamList = {
-  Welcome: undefined; // we can pass params to Welcome screen here
-  PolytekniskForening: undefined;
-  Education: undefined;
-  StudentLife: undefined;
-  DTU: undefined;
-  Dorms: undefined;
-  More: undefined; // screen for extra stuff like "links"
-};
-
-type RusbookProps = {
-  navigation: any;
-};
-
-// type RusbookChapters {
-//     id: ID!
-//     created_at: DateTime!
-//     updated_at: DateTime!
-//     Title: String
-//     Description: String
-//     rusbookChapterZone: [RusbookChaptersRusbookChapterZoneDynamicZone]
-//     cover: UploadFile
-//     primary_color: ENUM_RUSBOOKCHAPTERS_PRIMARY_COLOR
-//     published_at: DateTime
-//   }
 
 // API fetch function
 function rusbookChaptersShort() {
