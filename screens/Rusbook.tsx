@@ -1,64 +1,81 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import useSWR from "swr";
 import {
-  Button,
-  Divider,
-  Layout,
   Text,
-  TopNavigation,
-  BottomNavigation,
-  Icon,
+  List,
 } from "@ui-kitten/components";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { StackNavigationState } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import RusWelcome from "./rusbook/RusWelcomeScreen";
-import RusPolytekniskForening from "./rusbook/RusPolytekniskForening";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet} from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
+import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
+import { useAuth } from "../utils/Auth";
+import { Content } from "native-base";
 
-// TODO: MAY MOVE THIS TO EALIER STAGE OF PROGRAM LIKE types.tsx or App.tsx
-type RusbookStackParamList = {
-  Welcome: undefined; // we can pass params to Welcome screen here
-  PolytekniskForening: undefined;
-  Education: undefined;
-  StudentLife: undefined;
-  DTU: undefined;
-  Dorms: undefined;
-  More: undefined; // screen for extra stuff like "links"
-};
 
-type RusbookProps = {
-  navigation: any;
-};
+// API fetch function
+function rusbookChaptersShort() {
+  const { status, authToken, basicAuthToken } = useAuth();
 
-export const RusbookScreen = ({ navigation }: any) => (
-  <Layout style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text style={{ margin: 10 }} category="h1">
-      Select chapter
-    </Text>
-    <Divider />
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      {/* CONVERT THESE INTO BEAUTIFUL CARDS */}
+  // TODO: ensure we wait for a token before making a request!
+
+  const query = `{
+        rusbookChapters{
+            id,
+            Title,
+            Description
+        }
+    }
+    `;
+  const { data, error } = useSWR(
+    [query, basicAuthToken],
+    graphqlFetchWithToken
+  );
+
+  return {
+    chaptersShort: data ? data.rusbookChapters : undefined,
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
+
+export const RusbookScreen = ({ navigation }: any) => {
+  const { chaptersShort, isLoading, isError } = rusbookChaptersShort();
+
+  // component to render navCard
+  const renderRusbookNavCard = ({ item }: any) => {
+    console.log(item);
+    console.log("The ID: " + item.id);
+    
+
+    return (
       <NavSelectCard
         navigation={navigation}
-        route="Welcome"
-        title="Welcome"
-        icon_src={require("~/assets/images/favicon.png")}
-        description="Welcome to DTU let us tell you about opportunities available through DTU and PF."
+        title={item.Title}
+        chapter_id={item.id} // chapter id is being passed, such that chapter content can be fetched also
+        icon_src={require("~/assets/images/favicon.png")} // get icon from backend
+        description={item.Description}
       />
-      {/* <Button style={styles.rusbookButton} onPress={() => navigation.navigate('Welcome')}>Welcome</Button>
-            <Button style={styles.rusbookButton} onPress={() => navigation.navigate('PolytekniskForening')}>Polyteknisk Forening</Button>
-            <Button style={styles.rusbookButton} disabled={true} onPress={() => navigation.navigate('Education')}>Education</Button>
-            <Button style={styles.rusbookButton} disabled={true} onPress={() => navigation.navigate('StudentLife')}>Student Life</Button>
-            <Button style={styles.rusbookButton} disabled={true} onPress={() => navigation.navigate('DTU')}>DTU</Button>
-            <Button style={styles.rusbookButton} disabled={true} onPress={() => navigation.navigate('Dorms')}>Dorms</Button>
-            <Button style={styles.rusbookButton} disabled={true} onPress={() => navigation.navigate('More')}>More</Button> */}
-    </ScrollView>
-  </Layout>
-);
+    );
+  };
+
+  // TODO: add nice error and loading components
+  if (isError) return <Text category="p2">Error</Text>;
+  if (isLoading) return <Text category="p2">Loading...</Text>;
+
+  return (
+    <List
+      style={styles.listContainer}
+      contentContainerStyle={styles.contentContainer}
+      data={chaptersShort}
+      renderItem={renderRusbookNavCard}
+      extraData={navigation}
+    />
+  );
+};
 
 const styles = StyleSheet.create({
+  listContainer: {
+    // maxHeight: 320,
+  },
   contentContainer: {
     // flex: 1,
     alignItems: "center",
