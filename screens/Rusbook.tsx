@@ -44,7 +44,6 @@ export const RusbookScreen = ({ navigation }: any) => {
   const renderRusbookNavCard = ({ item }: any) => {
     console.log(item);
     console.log("The ID: " + item.id);
-    
 
     return (
       <NavSelectCard
