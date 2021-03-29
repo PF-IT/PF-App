@@ -92,17 +92,16 @@ const RenderContent = (chapterZone: any) => {
 };
 
 export default function RusbookChapter({ route, navigation }: any) {
+  console.log("params: " + JSON.stringify(route.params));
   const { chapterContent, isLoading, isError } = rusbookChapterContent(
     route.params.chapter_id
   );
-  React.useLayoutEffect(() => {
-    navigation.setOptions({ title: chapterContent.Title });
-  }, [navigation, chapterContent.Title]);
-  console.log("params: " + JSON.stringify(route.params));
 
   // TODO: add nice error and loading components
   if (isError) return <Text category="p2">Error</Text>;
   if (isLoading) return <Text category="p2">Loading...</Text>;
+
+  navigation.setOptions({ title: chapterContent.Title });
 
   return (
     // TODO: add content.cover as a hero
