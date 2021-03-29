@@ -38,7 +38,7 @@ export const setUserToken = (value: string) => setItem(USERTOKEN, value);
 export const fetchBasicToken = async () => {
   const query: string = `
     mutation {
-        login(input: { identifier: "app@pf.dk", password: "app123" }) {
+        login(input: { identifier: "app@pf.dk", password: "pf2021" }) {
         jwt
         }
     }`;

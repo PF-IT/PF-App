@@ -57,7 +57,8 @@ export const RusbookScreen = ({ navigation }: any) => {
   };
 
   // TODO: add nice error and loading components
-  if (isError) return <Text category="p2">Error</Text>;
+  console.log(isError)
+  if (isError) return <Text category="p2">Error...</Text>;
   if (isLoading) return <Text category="p2">Loading...</Text>;
 
   return (
