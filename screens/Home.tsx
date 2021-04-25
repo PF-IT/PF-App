@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { RusbookScreen } from "../screens/Rusbook";
 import { useAuth } from "../utils/Auth";
 import RusbookChapter from "./rusbook/RusbookChapter";
+import { styles } from "react-native-markdown-renderer";
 
 const HomeScreen = ({ navigation }: any) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -59,11 +60,55 @@ const HomeStack = createStackNavigator();
 export const HomeStackScreen = () => (
   <HomeStack.Navigator>
     {/* initial screen */}
-    <HomeStack.Screen name="Home" component={HomeScreen} />
+    <HomeStack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+        headerStyle: {
+          backgroundColor: "#009FE3",
+        },
+        headerBackTitleVisible: true,
+        headerTitleAlign: "left",
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+        },
+      }}
+    />
     {/* declaring other screens */}
-    <HomeStack.Screen name="Rusbook" component={RusbookScreen} />
+    <HomeStack.Screen
+      name="Rusbook"
+      component={RusbookScreen}
+      options={{
+        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+        headerStyle: {
+          backgroundColor: "#009FE3",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+        },
+      }}
+    />
     {/* screen navigated to by rusbookNavCards in Rusbook screen */}
-    <HomeStack.Screen name="RusbookChapter" component={RusbookChapter} />
+    <HomeStack.Screen
+      name="RusbookChapter"
+      component={RusbookChapter}
+      options={{
+        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+        headerStyle: {
+          backgroundColor: "#009FE3",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+        },
+      }}
+    />
   </HomeStack.Navigator>
 );
 
@@ -75,7 +120,7 @@ const themedStyles = StyleService.create({
     backgroundColor: "background-basic-color-1",
     padding: 10,
   },
-  h1: { padding: 10 },
+  h1: { padding: 10, color: "color-primary-500" },
   p2: { paddingHorizontal: 40, paddingBottom: 20 },
   tab: {
     height: 200,

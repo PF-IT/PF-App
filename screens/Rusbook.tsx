@@ -1,11 +1,12 @@
 import React from "react";
 import useSWR from "swr";
-import { Text, List } from "@ui-kitten/components";
+import { Text, List, StyleService, useStyleSheet } from "@ui-kitten/components";
 import { StyleSheet } from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
 import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
 import { useAuth } from "../utils/Auth";
 import { Content } from "native-base";
+import { setStatusBarBackgroundColor } from "expo-status-bar";
 
 // API fetch function
 function rusbookChaptersShort() {
@@ -35,11 +36,12 @@ function rusbookChaptersShort() {
 
 export const RusbookScreen = ({ navigation }: any) => {
   const { chaptersShort, isLoading, isError } = rusbookChaptersShort();
-
+  const styles = useStyleSheet(themedStyles);
   // component to render navCard
   const renderRusbookNavCard = ({ item }: any) => {
     console.log(item);
     console.log("The ID: " + item.id);
+    console.log("The Title: " + item.Title);
 
     return (
       <NavSelectCard
@@ -68,10 +70,10 @@ export const RusbookScreen = ({ navigation }: any) => {
   );
 };
 
-const styles = StyleSheet.create({
+const themedStyles = StyleService.create({
   listContainer: {
     // maxHeight: 320,
-    backgroundColor: "#E0E0E2",
+    backgroundColor: "background-basic-color-1",
   },
   contentContainer: {
     // flex: 1,

@@ -10,13 +10,7 @@ import {
   TopNavigation,
   TopNavigationAction,
 } from "@ui-kitten/components";
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  PureComponent,
-} from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useAuth } from "../../utils/Auth";
 import gql from "graphql-tag";
 import useSWR from "swr";
@@ -127,7 +121,7 @@ export default function RusbookChapter({ route, navigation }: any) {
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
-    justifyContent: "center",
+    //justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
   },
@@ -149,27 +143,30 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 200,
   },
-  image: {
-    margin: 10,
-    width: 400,
-    height: 200,
-  },
+  image: { width: 400, height: 120, marginBottom: 5, marginTop: 5 },
   richText: {},
 });
 
 const mdstyles = StyleSheet.create({
-  text: { width: "90%", margin: 0, padding: 0 },
+  text: {
+    width: "100%",
+    paddingLeft: 10,
+    paddingRight: 10,
+    margin: 0,
+    marginBottom: -10,
+    paddingBottom: 0,
+  },
   strong: { fontWeight: "bold" },
   em: { fontStyle: "italic" },
   link: { fontWeight: "bold", color: "blue" },
 
-  heading: {},
+  heading: { marginTop: 15 },
   heading1: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: "normal",
   },
   heading2: {
-    fontSize: 24,
+    fontSize: 20,
   },
   heading3: {
     fontSize: 18,
