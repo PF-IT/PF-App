@@ -37,7 +37,7 @@ export const NavSelectCard = (props: NavSelectCardProps) => {
   const Header = (props: any) => (
     <View {...props} style={[props.style, styles.headerContainer]}>
       <Text category="h4" style={(props.style, styles.headerText)}>
-        Header
+        {props.title}
       </Text>
     </View>
   );
@@ -105,7 +105,7 @@ const themedStyles = StyleService.create({
     marginVertical: 4,
     borderRadius: 4,
     borderWidth: 0,
-    width: 300,
+    width: 400,
     shadowColor: "#000",
     backgroundColor: "nav-card-background-color",
     shadowOffset: {
