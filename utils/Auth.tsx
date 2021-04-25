@@ -118,27 +118,3 @@ export const useAuth = () => {
     }
     return context
 }
-
-
-var shouldFetch = true;
-// get basicToken from secureStore or else fetch a new one from backend
-async function fetchJWT() {
-    const query: string = `
-    mutation {
-        login(input: { identifier: "app@pf.dk", password: "app123" }) {
-        jwt
-        }
-    }`;
-    const { data, error } = useSWR(() => shouldFetch ? query : null, graphql_fetcher)
-
-    // temp solution to only get one token
-    if (data) {
-        shouldFetch = false;
-    }
-
-    return {
-        token: data ? data.login.jwt : undefined,
-        isLoading: !error && !data,
-        isError: error
-    }
-};

@@ -30,8 +30,10 @@ function rusbookChapterContent(id: any) {
 
   // TODO: ensure we wait for a token before making a request!
 
+  console.log(id);
+  
   const query = gql`query {
-            rusbookChapter(id: ${id}){
+            rusbookChapter(id: "${id}"){
                 Title,
                 primary_color,
                 Description,
@@ -52,7 +54,7 @@ function rusbookChapterContent(id: any) {
             }
         }
     }
-    `;
+    `
 
   const { data, error } = useSWR(
     [query, basicAuthToken],
