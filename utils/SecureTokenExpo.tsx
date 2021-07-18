@@ -1,8 +1,9 @@
 // this file is made entirely for expo's version of sensitive information
 import * as SecureStore from 'expo-secure-store'
 import { graphql_fetcher } from './api';
+import Constants from 'expo-constants';
 
-const BASICTOKEN = 'basictoken';
+const BASICTOKEN = 'basictoken'; // basic app auth ex. for fetching rusbook chapters
 const USERTOKEN = 'usertoken';
 const SHARED_PERFS = 'polytekniskForeningSharedPrefs';
 const KEYCHAIN_SERVICE = 'polytekniskForeningKeychain';
@@ -36,9 +37,11 @@ export const setUserToken = (value: string) => setItem(USERTOKEN, value);
 // contact backend to get new basicToken
 // app should know basic device authentication credentials
 export const fetchBasicToken = async () => {
+  var app_username = Constants.manifest?.app_username;
+  var app_password = Constants.manifest?.app_password;
   const query: string = `
     mutation {
-        login(input: { identifier: "app.mobile@pf.dk", password: "pfmobileapplication2021" }) {
+        login(input: { identifier: ${app_username}, password: ${app_password} }) {
         jwt
         }
     }`;
