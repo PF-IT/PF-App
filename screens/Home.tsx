@@ -1,4 +1,5 @@
 import React from "react";
+import Constants from 'expo-constants';
 import {
   BottomNavigation,
   BottomNavigationTab,

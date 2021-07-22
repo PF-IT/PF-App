@@ -1,24 +1,23 @@
 module.exports = () => {
-    let configuration = new Map();
-    switch (process.env.APP_ENVIRONMENT) {
-        case 'production':
-            configuration.set("strapi", "https://appdata.pf.dk");
-            configuration.set("strapi_api", "https://appdata.pf.dk/api");
-            configuration.set("strapi_graphql", "https://appdata.pf.dk/graphql");
-            configuration.set("app_username", env.process.APP_USERNAME);
-            configuration.set("app_password", env.process.APP_PASSWORD);
-            break;
-        case 'staging':
-            throw new Error("Staging mode not yet implemented!");
-            break;
-        default:
-            /* Defaults to development configuration */
-            configuration.set("strapi", "http://localhost:1337");
-            configuration.set("strapi_api", "http://localhost:1337/api");
-            configuration.set("strapi_graphql", "http://localhost:1337/graphql");
-            configuration.set("app_username", "app@pf.dk");
-            configuration.set("app_password", "passwd");
-            break;
+    if (process.env.APP_ENVIRONMENT === 'production') {
+        return {
+            strapi: "https://appdata.pf.dk",
+            strapi_api: "https://appdata.pf.dk/api",
+            strapi_graphql: "https://appdata.pf.dk/graphql",
+            app_username: env.process.APP_USERNAME,
+            app_password: env.process.APP_PASSWORD
+        };
+    } else if (process.env.APP_ENVIRONMENT = 'staging') {
+        return {
+            // STAGING not implemented
+        };
+    } else { // defaults to development
+        return {
+            strapi: "http://localhost:1337",
+            strapi_api: "http://localhost:1337/api",
+            strapi_graphql: "http://localhost:1337/graphql",
+            app_username: "app@pf.dk",
+            app_password: "passwd"
+        };
     }
-    return configuration;
 }

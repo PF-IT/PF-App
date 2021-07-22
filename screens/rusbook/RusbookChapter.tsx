@@ -25,29 +25,36 @@ function rusbookChapterContent(id: any) {
   // TODO: ensure we wait for a token before making a request!
 
   console.log(id);
-  
+
   const query = gql`query {
             rusbookChapter(id: "${id}"){
-                Title,
-                primary_color,
+              Title,
+                # primary_color,
                 Description,
-                cover{
-                    url
-                }
-            rusbookChapterZone {
+                # cover{
+                #     url
+                # }
+            content {
             __typename
-                ... on ComponentDefaultRichText {
+                ... on ComponentRusbookOnlyText {
                 id,
-                richText
-                }
-                ... on ComponentDefaultImage {
-                    image {
-                        url
-                    }
+                content
+                },
+                ... on ComponentRusbookOnlyMedia {
+                  media {
+                    url
+                  }
+                },
+              	... on ComponentRusbookStandard {
+                  id,
+                  header { # image
+                    url
+                  },
+                  content
                 }
             }
-        }
     }
+  }
     `
 
   const { data, error } = useSWR(
@@ -66,20 +73,19 @@ function rusbookChapterContent(id: any) {
 
 const RenderContent = (chapterZone: any) => {
   console.log("The chapterZone");
-
-  console.log(JSON.stringify(chapterZone));
+  console.log(chapterZone);
 
   switch (chapterZone.item.__typename) {
-    case "ComponentDefaultRichText":
+    case "ComponentRusbookOnlyText":
       return (
-        <Markdown style={mdstyles}>{chapterZone.item.richText}</Markdown>
+        <Markdown style={mdstyles}>{chapterZone.item.content}</Markdown>
         // <Text style={styles.richText}>{chapterZone.item.richText}</Text>
       );
-    case "ComponentDefaultImage":
+    case "ComponentRusbookOnlyMedia":
       return (
         <Image
           style={styles.image}
-          source={{ uri: baseurl + chapterZone.item.image.url }}
+          source={{ uri: baseurl + chapterZone.item.media.url }}
         />
       );
     default:
@@ -112,9 +118,9 @@ export default function RusbookChapter({ route, navigation }: any) {
       <List
         style={styles.listContainer}
         contentContainerStyle={styles.contentContainer}
-        data={chapterContent.rusbookChapterZone}
+        data={chapterContent.content}
         renderItem={RenderContent}
-        // extraData={navigation}
+      // extraData={navigation}
       />
     </Layout>
   );

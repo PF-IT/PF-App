@@ -8,7 +8,6 @@ export const baseurl = Constants.manifest?.strapi;
 export const endpoint = Constants.manifest?.strapi_graphql;
 const graphql_client = new GraphQLClient(endpoint);
 
-
 // fetcher functions
 export const graphqlFetchWithToken = (query:any, jwtToken:any ) => {
     graphql_client.setHeader('authorization', `Bearer ${jwtToken}`);
