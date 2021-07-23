@@ -16,6 +16,7 @@ import gql from "graphql-tag";
 import useSWR from "swr";
 import { baseurl, graphqlFetchWithToken } from "../../utils/api";
 import Markdown from "react-native-markdown-renderer";
+import Constants from 'expo-constants';
 
 // API Fetch function request chapter content
 // TODO: should be put into a common API collection
@@ -24,7 +25,7 @@ function rusbookChapterContent(id: any) {
 
   // TODO: ensure we wait for a token before making a request!
 
-  console.log(id);
+  // console.log(id);
 
   const query = gql`query {
             rusbookChapter(id: "${id}"){
@@ -54,15 +55,14 @@ function rusbookChapterContent(id: any) {
                 }
             }
     }
-  }
-    `
+  }`
 
   const { data, error } = useSWR(
     [query, basicAuthToken],
     graphqlFetchWithToken
   );
 
-  console.log(data);
+  // console.log(data);
 
   return {
     chapterContent: data ? data.rusbookChapter : undefined,
@@ -72,8 +72,9 @@ function rusbookChapterContent(id: any) {
 }
 
 const RenderContent = (chapterZone: any) => {
-  console.log("The chapterZone");
-  console.log(chapterZone);
+  // console.log("The chapterZone");
+  // console.log(chapterZone);
+  
 
   switch (chapterZone.item.__typename) {
     case "ComponentRusbookOnlyText":
@@ -85,8 +86,18 @@ const RenderContent = (chapterZone: any) => {
       return (
         <Image
           style={styles.image}
-          source={{ uri: baseurl + chapterZone.item.media.url }}
+          source={{ uri: Constants.manifest?.strapi + chapterZone.item.media[0].url }} // TODO: add logic for multiple images
         />
+      );
+    case "ComponentRusbookStandard":
+      return (
+        <>
+          <Image
+            style={styles.image}
+            source={{ uri: Constants.manifest?.strapi + chapterZone.item.header[0].url}}
+          />
+          <Markdown style={mdstyles}>{chapterZone.item.content}</Markdown>
+        </>
       );
     default:
       return <Text category="p1">NOT A VALID __TYPENAME</Text>;
@@ -94,27 +105,21 @@ const RenderContent = (chapterZone: any) => {
 };
 
 export default function RusbookChapter({ route, navigation }: any) {
-  console.log("params: " + JSON.stringify(route.params));
+  // console.log("params: " + JSON.stringify(route.params));
   const { chapterContent, isLoading, isError } = rusbookChapterContent(
     route.params.chapter_id
   );
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ title: chapterContent.Title });
+  }, [navigation, chapterContent.Title]);
 
   // TODO: add nice error and loading components
   if (isError) return <Text category="p2">Error</Text>;
   if (isLoading) return <Text category="p2">Loading...</Text>;
 
-  navigation.setOptions({ title: chapterContent.Title });
-
   return (
     // TODO: add content.cover as a hero
-    <Layout style={styles.layout}>
-      {/* Removed: */}
-      {/* <Layout style={styles.header}>
-        // Should be in navigation top:   
-        <Text category="h1">{chapterContent.Title}</Text>
-        // Should only be seen in the rusbook navigation:
-        <Text category="p1">{chapterContent.Description}</Text>
-      </Layout> */}
+    // <Layout style={styles.layout}>
       <List
         style={styles.listContainer}
         contentContainerStyle={styles.contentContainer}
@@ -122,7 +127,7 @@ export default function RusbookChapter({ route, navigation }: any) {
         renderItem={RenderContent}
       // extraData={navigation}
       />
-    </Layout>
+    // </Layout>
   );
 }
 

@@ -13,3 +13,11 @@ To load correct backend endpoints and app configurations set the APP_ENVIRONMENT
 To setup the app configuration for production a few environment variables must be set:
 
 # Deployment
+
+# Prerequisites
+The Strapi backend must contain an app user with the username: ```app@pf.dk``` both in the dev and production environment
+
+## Common bugs
+We are aware of a few issues not yet addressed.
+
+On is the cached JWT token used by the app. After running the emulator locally, one may wish to connect to production. In this case, clean the emulator and its content to fetch a fresh JWT token - else the app won't be able to retrieve content probably.
