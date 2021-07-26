@@ -22,6 +22,7 @@ import {
   View,
 } from "react-native";
 import { FlexStyleProps, RenderProp } from "@ui-kitten/components/devsupport";
+import { SvgUri } from "react-native-svg";
 
 type NavSelectCardProps = {
   navigation: StackNavigationProp<any, string>;
@@ -33,6 +34,8 @@ type NavSelectCardProps = {
 
 export const NavSelectCard = (props: NavSelectCardProps) => {
   const styles = useStyleSheet(themedStyles);
+  // console.log(props);
+  
 
   const Header = (props: any) => (
     <View {...props} style={[props.style, styles.headerContainer]}>
@@ -63,7 +66,12 @@ export const NavSelectCard = (props: NavSelectCardProps) => {
       // footer={() => <Footer title={props.title}/>}
     >
       <View style={styles.content}>
-        <Avatar shape="square" size="large" source={props.icon_src} />
+        {/* <Avatar shape="square" size="large" source={props.icon_src} /> */}
+        <SvgUri
+          width="100%"
+          height="100%"
+          uri={String(props.icon_src)}
+        />
         <Text category="p2" style={styles.description}>
           {props.description}
         </Text>

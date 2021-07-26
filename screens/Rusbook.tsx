@@ -7,6 +7,7 @@ import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
 import { useAuth } from "../utils/Auth";
 import { Content } from "native-base";
 import { setStatusBarBackgroundColor } from "expo-status-bar";
+import Constants from 'expo-constants';
 
 // API fetch function
 function rusbookChaptersShort() {
@@ -18,7 +19,10 @@ function rusbookChaptersShort() {
         rusbookChapters{
             id,
             Title,
-            Description
+            Description,
+            Icon {
+              url
+            }
         }
     }
     `;
@@ -39,16 +43,18 @@ export const RusbookScreen = ({ navigation }: any) => {
   const styles = useStyleSheet(themedStyles);
   // component to render navCard
   const renderRusbookNavCard = ({ item }: any) => {
-    console.log(item);
-    console.log("The ID: " + item.id);
-    console.log("The Title: " + item.Title);
+    // console.log(item);
+    // console.log("The ID: " + item.id);
+    // console.log("The Title: " + item.Title);
+    // console.log(Constants.manifest?.strapi + item.Icon.url);    
 
     return (
       <NavSelectCard
         navigation={navigation}
         title={item.Title}
         chapter_id={item.id} // chapter id is being passed, such that chapter content can be fetched also
-        icon_src={require("~/assets/images/favicon.png")} // TODO: get icon from backend
+        icon_src={Constants.manifest?.strapi + item.Icon.url}
+        // icon_src={require("~/assets/images/favicon.png")} // TODO: get icon from backend
         description={item.Description}
       />
     );
