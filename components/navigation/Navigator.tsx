@@ -16,29 +16,82 @@ import { AboutScreen } from "../../screens/About";
 import { HomeStackScreen } from "../../screens/Home";
 import { RusbookScreen } from "../../screens/Rusbook";
 import RusbookChapter from "../../screens/rusbook/RusbookChapter";
-// import { Tab } from "native-base";
 
-// next should stay in Navigator.tsx
-const { Navigator, Screen } = createBottomTabNavigator();
+// Custom styling of navigation
 type ButtomTabBarProps = {
   navigation: any; // what type should this have????
   state: any; //{routeNames: number[], index: number}
 };
 
-// const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
-//   <BottomNavigation
-//     indicatorStyle={{ backgroundColor: "#0081B8", height: 5 }}
-//     style={{ backgroundColor: "#009FE3" }}
-//     selectedIndex={state.index}
-//     onSelect={(index) => navigation.navigate(state.routeNames[index])}
-//   >
-//     <BottomNavigationTab title={<Text style={{ color: "red" }}>About</Text>} />
+const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
+  <BottomNavigation
+    indicatorStyle={{ backgroundColor: "#0081B8", height: 5 }}
+    style={{ backgroundColor: "#009FE3" }}
+    selectedIndex={state.index}
+    onSelect={(index) => navigation.navigate(state.routeNames[index])}
+  >
+    <BottomNavigationTab title={<Text style={{ color: "red" }}>About</Text>} />
 
-//     <BottomNavigationTab
-//       title={<Text style={{ color: "white" }}>Rusbook</Text>}
-//     />
-//   </BottomNavigation>
-// );
+    <BottomNavigationTab
+      title={<Text style={{ color: "white" }}>Rusbook</Text>}
+    />
+  </BottomNavigation>
+);
+
+// ACTUAL NAVIGATION
+
+const RusbookStack = createStackNavigator();
+const RusbookStackScreen = () => (
+  <RusbookStack.Navigator>
+    <RusbookStack.Screen
+      name="Rusbook"
+      component={RusbookScreen}
+      options={{
+        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+        headerStyle: {
+          backgroundColor: "#009FE3",
+        },
+        headerBackTitleVisible: true,
+        headerTitleAlign: "left",
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+        },
+      }}
+    />
+    <RusbookStack.Screen
+      name="RusbookChapter"
+      component={RusbookChapter}
+      options={{
+        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+        headerStyle: {
+          backgroundColor: "#009FE3",
+        },
+        headerBackTitleVisible: true,
+        headerTitleAlign: "center",
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+        },
+      }}
+    />
+  </RusbookStack.Navigator>
+);
+
+// root of navigation tree
+const Tab = createBottomTabNavigator();
+export const AppNavigator = () => (
+  <NavigationContainer>
+    <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+      <Tab.Screen name="About" component={AboutScreen} />
+      <Tab.Screen name="Rusbook" component={RusbookStackScreen} />
+    </Tab.Navigator>
+  </NavigationContainer>
+);
+
+
 
 // Top navigation
 // const Stack = createStackNavigator();
@@ -89,54 +142,3 @@ type ButtomTabBarProps = {
 //     <Screen name="RusbookChapter" component={RusbookChapter} />
 //   </Navigator>
 // );
-
-const RusbookStack = createStackNavigator();
-const RusbookStackScreen = () => (
-  <RusbookStack.Navigator>
-    <RusbookStack.Screen
-      name="Rusbook"
-      component={RusbookScreen}
-      options={{
-        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
-        headerStyle: {
-          backgroundColor: "#009FE3",
-        },
-        headerBackTitleVisible: true,
-        headerTitleAlign: "left",
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontFamily: "Roboto",
-          fontWeight: "bold",
-        },
-      }}
-    />
-    <RusbookStack.Screen
-      name="RusbookChapter"
-      component={RusbookChapter}
-      options={{
-        //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
-        headerStyle: {
-          backgroundColor: "#009FE3",
-        },
-        headerBackTitleVisible: true,
-        headerTitleAlign: "center",
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontFamily: "Roboto",
-          fontWeight: "bold",
-        },
-      }}
-    />
-  </RusbookStack.Navigator>
-);
-
-// root of navigation tree
-const Tab = createBottomTabNavigator();
-export const AppNavigator = () => (
-  <NavigationContainer>
-    <Tab.Navigator>
-      <Tab.Screen name="About" component={AboutScreen} />
-      <Tab.Screen name="Rusbook" component={RusbookStackScreen} />
-    </Tab.Navigator>
-  </NavigationContainer>
-);
