@@ -26,6 +26,10 @@ import { AuthProvider } from "./utils/Auth";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
+  // const previousHandler = ErrorUtils.getGlobalHandler();
+  // ErrorUtils.setGlobalHandler((error, isFatal) => {
+  //   console.log(error);
+  // })
   // const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {

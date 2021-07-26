@@ -38,18 +38,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Explanation: the side effect is to provide the app with an initial basic role state
     React.useEffect(() => {
         const initState = async () => {            try {
-                const basicAuthToken = await getBasicToken()
-                if (basicAuthToken) {
-                    console.log("basicToken retrieved from SecureStore: " + basicAuthToken);
-                    dispatch( { type: 'SIGN_IN_BASIC', basicAuthToken: basicAuthToken } );
-                } else {
-                    const freshToken = await fetchBasicToken()
+                // const basicAuthToken = await getBasicToken()
+                // if (basicAuthToken) {
+                //     console.log("basicToken retrieved from SecureStore: " + basicAuthToken);
+                //     dispatch( { type: 'SIGN_IN_BASIC', basicAuthToken: basicAuthToken } );
+                // } else {
+                //     const freshToken = await fetchBasicToken()
+                //     if (freshToken) {
+                //         console.log("Fetched new basicToken" + freshToken);
+                //         dispatch( {type: 'SIGN_IN_BASIC', basicAuthToken: freshToken} )
+                //         await setBasicToken(freshToken)
+                //     }
+                // }
+                // TODO: Right now we always fetch a fresh token.. Is this how we want to do it??
+                const freshToken = await fetchBasicToken()
                     if (freshToken) {
                         console.log("Fetched new basicToken" + freshToken);
                         dispatch( {type: 'SIGN_IN_BASIC', basicAuthToken: freshToken} )
                         await setBasicToken(freshToken)
                     }
-                }
                 const authToken = await getUserToken()
                 if (authToken) {
                     dispatch({ type: 'SIGN_IN_USER', authToken: authToken })

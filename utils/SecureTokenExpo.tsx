@@ -39,7 +39,6 @@ export const setUserToken = (value: string) => setItem(USERTOKEN, value);
 export const fetchBasicToken = async () => {
   var app_username = Constants.manifest?.app_username;
   var app_password = Constants.manifest?.app_password;
-  console.log("this is where we are")
   const query: string = `
     mutation {
         login(input: { identifier: "${app_username}", password: "${app_password}" }) {
@@ -47,5 +46,6 @@ export const fetchBasicToken = async () => {
         }
     }`;
     const response = await graphql_fetcher(query)
+    console.log(response);
     return response ? response.login.jwt : undefined
 }
