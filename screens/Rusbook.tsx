@@ -1,6 +1,12 @@
 import React from "react";
 import useSWR from "swr";
-import { Text, List, StyleService, useStyleSheet, Layout } from "@ui-kitten/components";
+import {
+  Text,
+  List,
+  StyleService,
+  useStyleSheet,
+  Layout,
+} from "@ui-kitten/components";
 import { StyleSheet } from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
 import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
@@ -84,7 +90,7 @@ const themedStyles = StyleService.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "background-basic-color-1",
-    padding: 10,
+    // padding: 10,
   },
   h1: { padding: 10, color: "color-primary-500" },
   p2: { paddingHorizontal: 40, paddingBottom: 20 },
