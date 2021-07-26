@@ -14,6 +14,7 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import { AboutScreen } from "../../screens/About";
 import { HomeStackScreen } from "../../screens/Home";
+import { RusbookScreen } from "../../screens/Rusbook";
 
 // next should stay in Navigator.tsx
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -33,14 +34,14 @@ const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
       title={<Text style={{ color: "white" }}>About</Text>}
     />
 
-    <BottomNavigationTab title={<Text style={{ color: "white" }}>Home</Text>} />
+    <BottomNavigationTab title={<Text style={{ color: "white" }}>Rusbook</Text>} />
   </BottomNavigation>
 );
 
 const TabNavigator = () => (
   <Navigator tabBar={(props) => <BottomTabBar {...props} />}>
     <Screen name="About" component={AboutScreen} />
-    <Screen name="Home" component={HomeStackScreen} />
+    <Screen name="Rusbook" component={RusbookScreen} />
   </Navigator>
 );
 
