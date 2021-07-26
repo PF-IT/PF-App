@@ -8,6 +8,8 @@ module.exports = function (api) {
           "rootPathSuffix": "./",
           "rootPathPrefix": "~/"
         }
-      ],]
+      ],
+      ["babel-plugin-transform-inline-environment-variables"]
+    ]
   };
 };
