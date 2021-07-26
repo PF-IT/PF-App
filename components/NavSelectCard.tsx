@@ -68,7 +68,7 @@ export const NavSelectCard = (props: NavSelectCardProps) => {
       <View style={styles.content}>
         {/* <Avatar shape="square" size="large" source={props.icon_src} /> */}
         <SvgUri
-          width="100%"
+          width="25%"
           height="100%"
           uri={String(props.icon_src)}
         />
@@ -100,9 +100,11 @@ const themedStyles = StyleService.create({
     elevation: 5,
   },
   content: {
+    paddingLeft: 30,
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    margin: -10,
+    // margin: -10,
   },
   footerContainer: {
     flexDirection: "row",
