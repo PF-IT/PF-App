@@ -1,6 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import { Text, List, StyleService, useStyleSheet } from "@ui-kitten/components";
+import { Text, List, StyleService, useStyleSheet, Layout } from "@ui-kitten/components";
 import { StyleSheet } from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
 import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
@@ -60,17 +60,34 @@ export const RusbookScreen = ({ navigation }: any) => {
   if (isLoading) return <Text category="p2">Loading...</Text>;
 
   return (
-    <List
-      style={styles.listContainer}
-      contentContainerStyle={styles.contentContainer}
-      data={chaptersShort}
-      renderItem={renderRusbookNavCard}
-      extraData={navigation}
-    />
+    <Layout style={styles.layout}>
+      <List
+        style={styles.listContainer}
+        contentContainerStyle={styles.contentContainer}
+        data={chaptersShort}
+        renderItem={renderRusbookNavCard}
+        extraData={navigation}
+      />
+    </Layout>
   );
 };
 
 const themedStyles = StyleService.create({
+  layout: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "background-basic-color-1",
+    padding: 10,
+  },
+  h1: { padding: 10, color: "color-primary-500" },
+  p2: { paddingHorizontal: 40, paddingBottom: 20 },
+  tab: {
+    height: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  viewPager: { paddingBottom: 10 },
   listContainer: {
     // maxHeight: 320,
     backgroundColor: "background-basic-color-1",

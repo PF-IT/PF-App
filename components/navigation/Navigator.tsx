@@ -15,6 +15,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { AboutScreen } from "../../screens/About";
 import { HomeStackScreen } from "../../screens/Home";
 import { RusbookScreen } from "../../screens/Rusbook";
+import RusbookChapter from "../../screens/rusbook/RusbookChapter";
+// import { Tab } from "native-base";
 
 // next should stay in Navigator.tsx
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -38,17 +40,79 @@ const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
   </BottomNavigation>
 );
 
-const TabNavigator = () => (
-  <Navigator tabBar={(props) => <BottomTabBar {...props} />}>
-    <Screen name="About" component={AboutScreen} />
-    <Screen name="Rusbook" component={RusbookScreen} />
-  </Navigator>
-);
+// Top navigation
+// const Stack = createStackNavigator();
+// export const AppStack = () => (
+//   <Stack.Navigator>
+//     {/* initial screen */}
+//     <Stack.Screen
+//       name="Rusbook"
+//       component={RusbookScreen}
+//       options={{
+//         //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+//         headerStyle: {
+//           backgroundColor: "#009FE3",
+//         },
+//         headerBackTitleVisible: true,
+//         headerTitleAlign: "left",
+//         headerTintColor: "#fff",
+//         headerTitleStyle: {
+//           fontFamily: "Roboto",
+//           fontWeight: "bold",
+//         },
+//       }}
+//     />
+//     {/* screen navigated to by rusbookNavCards in Rusbook screen */}
+//     <Stack.Screen
+//       name="RusbookChapter"
+//       component={RusbookChapter}
+//       options={{
+//         //TODO SHOULD BE GLOBAL FOR ALL HOMESCREENS
+//         headerStyle: {
+//           backgroundColor: "#009FE3",
+//         },
+//         headerTintColor: "#fff",
+//         headerTitleStyle: {
+//           fontFamily: "Roboto",
+//           fontWeight: "bold",
+//         },
+//       }}
+//     />
+//   </Stack.Navigator>
+// );
 
-const Stack = createStackNavigator();
+// Buttom navigation
+// const TabNavigator = () => (
+//   <Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+//     <Screen name="About" component={AboutScreen} />
+//     <Screen name="Rusbook" component={RusbookScreen} />
+//     <Screen name="RusbookChapter" component={RusbookChapter} />
+//   </Navigator>
+// );
+
+const RusbookStack = createStackNavigator();
+const RusbookStackScreen = () => (
+  <RusbookStack.Navigator>
+      <RusbookStack.Screen
+        name="Rusbook"
+        component={RusbookScreen}
+        // options={{ tabBarLabel: 'Home!' }}
+      />
+      <RusbookStack.Screen
+        name="RusbookChapter"
+        component={RusbookChapter}
+        // options={{ tabBarLabel: 'Home!' }}
+      />
+    </RusbookStack.Navigator>
+)
+
 // root of navigation tree
+const Tab = createBottomTabNavigator();
 export const AppNavigator = () => (
   <NavigationContainer>
-    <TabNavigator />
+    <Tab.Navigator>
+      <Tab.Screen name="About" component={AboutScreen} />
+      <Tab.Screen name="Rusbook" component={RusbookStackScreen} />
+    </Tab.Navigator>
   </NavigationContainer>
 );

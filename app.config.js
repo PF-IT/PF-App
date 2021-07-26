@@ -1,7 +1,6 @@
 //import {APP_ENVIRONMENT, APP_USERNAME, APP_PASSWORD} from 'react-native-dotenv';
 module.exports = () => {
     if (process.env.APP_ENVIRONMENT === 'production') {
-        console.log("Connecting to production backend...");
         return {
             strapi: "https://appdata.pf.dk",
             strapi_api: "https://appdata.pf.dk/api",
