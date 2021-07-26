@@ -16,7 +16,7 @@ import gql from "graphql-tag";
 import useSWR from "swr";
 import { baseurl, graphqlFetchWithToken } from "../../utils/api";
 import Markdown from "react-native-markdown-renderer";
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
 // API Fetch function request chapter content
 // TODO: should be put into a common API collection
@@ -55,7 +55,7 @@ function rusbookChapterContent(id: any) {
                 }
             }
     }
-  }`
+  }`;
 
   const { data, error } = useSWR(
     [query, basicAuthToken],
@@ -74,7 +74,6 @@ function rusbookChapterContent(id: any) {
 const RenderContent = (chapterZone: any) => {
   // console.log("The chapterZone");
   // console.log(chapterZone);
-  
 
   switch (chapterZone.item.__typename) {
     case "ComponentRusbookOnlyText":
@@ -86,7 +85,9 @@ const RenderContent = (chapterZone: any) => {
       return (
         <Image
           style={styles.image}
-          source={{ uri: Constants.manifest?.strapi + chapterZone.item.media[0].url }} // TODO: add logic for multiple images
+          source={{
+            uri: Constants.manifest?.strapi + chapterZone.item.media[0].url,
+          }} // TODO: add logic for multiple images
         />
       );
     case "ComponentRusbookStandard":
@@ -94,7 +95,9 @@ const RenderContent = (chapterZone: any) => {
         <>
           <Image
             style={styles.image}
-            source={{ uri: Constants.manifest?.strapi + chapterZone.item.header[0].url}}
+            source={{
+              uri: Constants.manifest?.strapi + chapterZone.item.header[0].url,
+            }}
           />
           <Markdown style={mdstyles}>{chapterZone.item.content}</Markdown>
         </>
@@ -114,7 +117,6 @@ export default function RusbookChapter({ route, navigation }: any) {
     if (chapterContent) {
       navigation.setOptions({ title: chapterContent.Title });
     }
-
   }, [navigation, chapterContent]);
 
   // TODO: add nice error and loading components
@@ -124,13 +126,13 @@ export default function RusbookChapter({ route, navigation }: any) {
   return (
     // TODO: add content.cover as a hero
     // <Layout style={styles.layout}>
-      <List
-        style={styles.listContainer}
-        contentContainerStyle={styles.contentContainer}
-        data={chapterContent.content}
-        renderItem={RenderContent}
+    <List
+      style={styles.listContainer}
+      contentContainerStyle={styles.contentContainer}
+      data={chapterContent.content}
+      renderItem={RenderContent}
       // extraData={navigation}
-      />
+    />
     // </Layout>
   );
 }
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   header: {
-    backgroundColor: "white",
+    backgroundColor: "red",
     width: "100%",
     paddingLeft: "5%",
     borderBottomWidth: 10,
