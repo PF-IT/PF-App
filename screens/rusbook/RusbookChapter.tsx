@@ -109,9 +109,13 @@ export default function RusbookChapter({ route, navigation }: any) {
   const { chapterContent, isLoading, isError } = rusbookChapterContent(
     route.params.chapter_id
   );
+
   React.useLayoutEffect(() => {
-    navigation.setOptions({ title: chapterContent.Title });
-  }, [navigation, chapterContent.Title]);
+    if (chapterContent) {
+      navigation.setOptions({ title: chapterContent.Title });
+    }
+
+  }, [navigation, chapterContent]);
 
   // TODO: add nice error and loading components
   if (isError) return <Text category="p2">Error</Text>;

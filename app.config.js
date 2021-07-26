@@ -1,13 +1,13 @@
-import {APP_ENVIRONMENT, APP_USERNAME, APP_PASSWORD} from 'react-native-dotenv';
+//import {APP_ENVIRONMENT, APP_USERNAME, APP_PASSWORD} from 'react-native-dotenv';
 module.exports = () => {
-    if (APP_ENVIRONMENT === 'production') {
+    if (process.env.APP_ENVIRONMENT === 'production') {
         console.log("Connecting to production backend...");
         return {
             strapi: "https://appdata.pf.dk",
             strapi_api: "https://appdata.pf.dk/api",
             strapi_graphql: "https://appdata.pf.dk/graphql",
-            app_username: APP_USERNAME,
-            app_password: APP_PASSWORD
+            app_username: process.env.APP_USERNAME,
+            app_password: process.env.APP_PASSWORD
         };
     } else if (process.env.APP_ENVIRONMENT === 'staging') {
         console.log("This feature is not implemented!");
