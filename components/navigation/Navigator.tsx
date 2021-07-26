@@ -30,11 +30,9 @@ const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
-    <BottomNavigationTab title={<Text style={{ color: "red" }}>About</Text>} />
+    <BottomNavigationTab title={<Text>About</Text>} />
 
-    <BottomNavigationTab
-      title={<Text style={{ color: "white" }}>Rusbook</Text>}
-    />
+    <BottomNavigationTab title={<Text>Rusbook</Text>} />
   </BottomNavigation>
 );
 
@@ -90,8 +88,6 @@ export const AppNavigator = () => (
     </Tab.Navigator>
   </NavigationContainer>
 );
-
-
 
 // Top navigation
 // const Stack = createStackNavigator();

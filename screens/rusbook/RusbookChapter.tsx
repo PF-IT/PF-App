@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image } from "react-native";
+import { Dimensions, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Divider,
@@ -138,23 +138,23 @@ export default function RusbookChapter({ route, navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
-    //justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-  header: {
-    backgroundColor: "red",
-    width: "100%",
-    paddingLeft: "5%",
-    borderBottomWidth: 10,
-  },
+  // layout: {
+  //   flex: 1,
+  //   //justifyContent: "center",
+  //   alignItems: "center",
+  //   backgroundColor: "white",
+  // },
+  // header: {
+  //   backgroundColor: "red",
+  //   width: "100%",
+  //   paddingLeft: "5%",
+  //   borderBottomWidth: 10,
+  // },
   listContainer: {
     width: "100%",
   },
   contentContainer: {
-    alignItems: "center",
+    // alignItems: "center",
     backgroundColor: "white",
     width: "100%",
   },
@@ -162,30 +162,47 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 200,
   },
-  image: { width: 400, height: 120, marginBottom: 5, marginTop: 5 },
+  image: {
+    resizeMode: "contain",
+    width: Dimensions.get("window").width * 0.9,
+    marginLeft: "auto",
+    marginRight: "auto",
+    // aspectRatio: 1,
+    height: 300,
+    marginBottom: 0,
+    marginTop: 0,
+    // borderWidth: 2,
+    // borderColor: "blue",
+    // backgroundColor: "#ffffff00",
+    // backgroundColor: "red",
+  },
   richText: {},
 });
 
 const mdstyles = StyleSheet.create({
   text: {
-    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "95%",
     paddingLeft: 10,
     paddingRight: 10,
     margin: 0,
     marginBottom: -10,
     paddingBottom: 0,
+    fontSize: 16,
   },
-  strong: { fontWeight: "bold" },
-  em: { fontStyle: "italic" },
+  strong: { fontWeight: "bold", fontSize: 14 },
+  em: { fontStyle: "italic", fontSize: 14 },
   link: { fontWeight: "bold", color: "blue" },
-
+  // list: { backgroundColor: "red" },
   heading: { marginTop: 15 },
   heading1: {
     fontSize: 24,
     fontWeight: "normal",
   },
   heading2: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "bold",
   },
   heading3: {
     fontSize: 18,
@@ -197,6 +214,7 @@ const mdstyles = StyleSheet.create({
     fontSize: 13,
   },
   heading6: {
-    fontSize: 11,
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

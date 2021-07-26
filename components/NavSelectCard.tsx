@@ -35,7 +35,6 @@ type NavSelectCardProps = {
 export const NavSelectCard = (props: NavSelectCardProps) => {
   const styles = useStyleSheet(themedStyles);
   // console.log(props);
-  
 
   const Header = (props: any) => (
     <View {...props} style={[props.style, styles.headerContainer]}>
@@ -67,11 +66,7 @@ export const NavSelectCard = (props: NavSelectCardProps) => {
     >
       <View style={styles.content}>
         {/* <Avatar shape="square" size="large" source={props.icon_src} /> */}
-        <SvgUri
-          width="25%"
-          height="100%"
-          uri={String(props.icon_src)}
-        />
+        <SvgUri width="25%" height="100%" uri={String(props.icon_src)} />
         <Text category="p2" style={styles.description}>
           {props.description}
         </Text>
