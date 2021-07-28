@@ -15,6 +15,7 @@ import {
   StackNavigationProp,
 } from "@react-navigation/stack";
 import {
+  Dimensions,
   ImageURISource,
   ScrollView,
   StyleSheet,
@@ -107,10 +108,11 @@ const themedStyles = StyleService.create({
     backgroundColor: "blue", // TODO: get colors from theme
   },
   card: {
+    width: Dimensions.get("window").width * 0.98,
     marginVertical: 4,
     borderRadius: 4,
     borderWidth: 0,
-    width: 400,
+    // width: 400,
     shadowColor: "#000",
     backgroundColor: "nav-card-background-color",
     shadowOffset: {

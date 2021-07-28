@@ -1,13 +1,14 @@
 import React from "react";
+import { View, Text, Button, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   BottomNavigation,
   BottomNavigationTab,
-  Button,
+  // Button,
   Divider,
   Layout,
-  Text,
+  // Text,
   StyleService,
   useStyleSheet,
 } from "@ui-kitten/components";
@@ -37,6 +38,14 @@ const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
 );
 
 // ACTUAL NAVIGATION
+function Logo() {
+  return (
+    <Image
+      style={{ width: 35, height: 35, marginRight: 8 }}
+      source={require("../../assets/images/logo.png")}
+    />
+  );
+}
 
 const RusbookStack = createStackNavigator();
 const RusbookStackScreen = () => (
@@ -50,12 +59,13 @@ const RusbookStackScreen = () => (
           backgroundColor: "#009FE3",
         },
         headerBackTitleVisible: true,
-        headerTitleAlign: "left",
+        headerTitleAlign: "center",
         headerTintColor: "#fff",
         headerTitleStyle: {
           fontFamily: "Roboto",
           fontWeight: "bold",
         },
+        headerRight: (props) => <Logo {...props} />,
       }}
     />
     <RusbookStack.Screen
@@ -66,13 +76,14 @@ const RusbookStackScreen = () => (
         headerStyle: {
           backgroundColor: "#009FE3",
         },
-        headerBackTitleVisible: true,
+        headerBackTitleVisible: false,
         headerTitleAlign: "center",
         headerTintColor: "#fff",
         headerTitleStyle: {
           fontFamily: "Roboto",
           fontWeight: "bold",
         },
+        headerRight: (props) => <Logo {...props} />,
       }}
     />
   </RusbookStack.Navigator>
@@ -82,7 +93,10 @@ const RusbookStackScreen = () => (
 const Tab = createBottomTabNavigator();
 export const AppNavigator = () => (
   <NavigationContainer>
-    <Tab.Navigator initialRouteName="Rusbook" tabBar={(props) => <BottomTabBar {...props} />}>
+    <Tab.Navigator
+      initialRouteName="Rusbook"
+      tabBar={(props) => <BottomTabBar {...props} />}
+    >
       <Tab.Screen name="About" component={AboutScreen} />
       <Tab.Screen name="Rusbook" component={RusbookStackScreen} />
     </Tab.Navigator>
