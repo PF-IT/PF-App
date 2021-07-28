@@ -18,19 +18,13 @@ export const AboutScreen = ({ navigation }: any) => {
       <Text style={styles.title}>What is this app about?</Text>
       <Text style={{ padding: 20 }}>
         <Text>
-          Traditionally DTU students were handed a physical version of the
-          handbook called "Rusbogen". The main purpose of this app is to provide
-          a more
-          <Text style={{ fontWeight: "bold" }}>
-            {" "}
-            sustainable and accessible{" "}
-          </Text>
-          way for students to look up important information regarding their
-          studies. Hence, remove the need to print a physical version of the
-          handbook. 👏
+        Traditionally DTU students were handed a physical version of the handbook called "Rusbogen."
+        The primary purpose of this app is to provide a more sustainable and accessible way for students 
+        to look up important information regarding their studies. 
+        Hence, remove the need to print a physical version of the handbook. 👏
         </Text>
       </Text>
-      <Text style={{ fontStyle: "italic" }}>- Starostka & Sam</Text>
+      <Text style={{ fontStyle: "italic" }}>- Benjamin & Sam</Text>
     </Layout>
   );
 };

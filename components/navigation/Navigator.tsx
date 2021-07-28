@@ -82,7 +82,7 @@ const RusbookStackScreen = () => (
 const Tab = createBottomTabNavigator();
 export const AppNavigator = () => (
   <NavigationContainer>
-    <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
+    <Tab.Navigator initialRouteName="Rusbook" tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="About" component={AboutScreen} />
       <Tab.Screen name="Rusbook" component={RusbookStackScreen} />
     </Tab.Navigator>

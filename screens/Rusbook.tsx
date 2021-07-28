@@ -68,8 +68,8 @@ export const RusbookScreen = ({ navigation }: any) => {
 
   // TODO: add nice error and loading components
   console.log(isError);
-  if (isError) return <Text category="p2">Error...</Text>;
-  if (isLoading) return <Text category="p2">Loading...</Text>;
+  if (isError) return <Text category="p2" style={{ alignItems: "center", justifyContent: "center" }}>Error...</Text>;
+  if (isLoading) return <Text category="p2" style={{ alignItems: "center", justifyContent: "center" }}>Loading...</Text>;
 
   return (
     <Layout style={styles.layout}>
