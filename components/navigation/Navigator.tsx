@@ -31,9 +31,9 @@ const BottomTabBar = ({ navigation, state }: ButtomTabBarProps) => (
     selectedIndex={state.index}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
-    <BottomNavigationTab title={<Text>About</Text>} />
+    <BottomNavigationTab title={<Text style={{color: 'white'}}>About</Text>} />
 
-    <BottomNavigationTab title={<Text>Rusbook</Text>} />
+    <BottomNavigationTab title={<Text style={{color: 'white'}}>Rusbook</Text>} />
   </BottomNavigation>
 );
 

@@ -76,7 +76,7 @@
   "color-danger-transparent-600": "rgba(255, 48, 55, 0.48)",
 
   "text-basic-color": "black",
-  "text-hint-color": "$color-primary-300",
+  "text-hint-color": "white",
   "text-disabled-color": "black",
 
   "background-basic-color-1": "#E0E0E2",
