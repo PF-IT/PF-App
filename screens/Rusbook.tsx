@@ -16,6 +16,7 @@ import { setStatusBarBackgroundColor } from "expo-status-bar";
 import Constants from 'expo-constants';
 
 // API fetch function
+
 function rusbookChaptersShort() {
   const { status, authToken, basicAuthToken } = useAuth();
 
@@ -32,8 +33,8 @@ function rusbookChaptersShort() {
         }
     }
     `;
-  const { data, error } = useSWR(
-    [query, basicAuthToken],
+  const { data, error } = useSWR(basicAuthToken ? 
+    [query, basicAuthToken] : null,
     graphqlFetchWithToken
   );
 

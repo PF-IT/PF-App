@@ -120,7 +120,7 @@ export default function RusbookChapter({ route, navigation }: any) {
   }, [navigation, chapterContent]);
 
   // TODO: add nice error and loading components
-  if (isError) return <Text category="p2">Error</Text>;
+  if (isError) {throw new Error("Error occured while fetching rusbook chapter")} // return <Text category="p2">{}</Text>;
   if (isLoading) return <Text category="p2">Loading...</Text>;
 
   return (

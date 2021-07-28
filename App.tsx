@@ -23,6 +23,7 @@ import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { default as theme } from "./PFThemeLight.json"; // <-- Import app theme
 import { default as mapping } from "./mapping.json"; // <-- Import app mapping
 import { AuthProvider } from "./utils/Auth";
+import ErrorBoundary from "./ErrorBoundary";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -36,17 +37,17 @@ export default function App() {
     return null;
   } else {
     return (
-      <>
+      <ErrorBoundary>
         <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva}
-        theme={{ ...eva.light, ...theme }}
-        customMapping={mapping}>
-          <AuthProvider>
-            <StatusBar style='auto' />
-            <AppNavigator />
-          </AuthProvider>
+          theme={{ ...eva.light, ...theme }}
+          customMapping={mapping}>
+            <AuthProvider>
+              <StatusBar style='auto' />
+              <AppNavigator />
+            </AuthProvider>
         </ApplicationProvider>
-        </>
+      </ErrorBoundary>
     );
   }
 }
