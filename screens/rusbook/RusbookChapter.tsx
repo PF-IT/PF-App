@@ -9,6 +9,7 @@ import {
   Text,
   TopNavigation,
   TopNavigationAction,
+  Spinner
 } from "@ui-kitten/components";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useAuth } from "../../utils/Auth";
@@ -120,8 +121,13 @@ export default function RusbookChapter({ route, navigation }: any) {
   }, [navigation, chapterContent]);
 
   // TODO: add nice error and loading components
-  if (isError) {throw new Error("Error occured while fetching rusbook chapter")} // return <Text category="p2">{}</Text>;
-  if (isLoading) return <Text category="p2">Loading...</Text>;
+  if (isError) { throw new Error("Error occured while fetching rusbook chapter") } // return <Text category="p2">{}</Text>;
+  if (isLoading) return (
+    <View style={{ alignItems: "center" , marginVertical: 20}}>
+      <Spinner status='primary' size="giant" />
+      <Text category="p2" style={{ alignItems: "center", justifyContent: "center", margin: 20 }}>Do you have an internet connection?</Text>
+    </View>
+  );
 
   return (
     // TODO: add content.cover as a hero
@@ -131,7 +137,7 @@ export default function RusbookChapter({ route, navigation }: any) {
       contentContainerStyle={styles.contentContainer}
       data={chapterContent.content}
       renderItem={RenderContent}
-      // extraData={navigation}
+    // extraData={navigation}
     />
     // </Layout>
   );

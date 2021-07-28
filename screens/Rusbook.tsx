@@ -6,8 +6,9 @@ import {
   StyleService,
   useStyleSheet,
   Layout,
+  Spinner
 } from "@ui-kitten/components";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavSelectCard } from "../components/NavSelectCard";
 import { graphqlFetchWithToken, graphql_fetcher } from "../utils/api";
 import { useAuth } from "../utils/Auth";
@@ -68,9 +69,14 @@ export const RusbookScreen = ({ navigation }: any) => {
   };
 
   // TODO: add nice error and loading components
-  console.log(isError);
-  if (isError) return <Text category="p2" style={{ alignItems: "center", justifyContent: "center" }}>Error...</Text>;
-  if (isLoading) return <Text category="p2" style={{ alignItems: "center", justifyContent: "center" }}>Loading...</Text>;
+  //if (isError) return <Text category="p2" style={{ alignItems: "center", justifyContent: "center" }}>Error...</Text>;
+  if (isError) {throw new Error("Failed to fetch short information about rusbook chapters.")}
+  if (isLoading) return (
+    <View style={{alignItems: "center", marginVertical: 20}}>
+      <Spinner status='primary' size="giant"/>
+      <Text category="p2" style={{ alignItems: "center", justifyContent: "center" , margin: 20}}>Do you have an internet connection?</Text>
+    </View>
+  )
 
   return (
     <Layout style={styles.layout}>

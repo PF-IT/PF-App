@@ -46,6 +46,6 @@ export const fetchBasicToken = async () => {
         }
     }`;
     const response = await graphql_fetcher(query)
-    console.log(response);
+
     return response ? response.login.jwt : undefined
 }
