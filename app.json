@@ -23,11 +23,7 @@
       "bundleIdentifier": "dk.pf.pfApp"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-    "package": "dk.pf.pf_app_project"
+      "package": "dk.pf.pf_app_project"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
