@@ -37,8 +37,8 @@ export const setUserToken = (value: string) => setItem(USERTOKEN, value);
 // contact backend to get new basicToken
 // app should know basic device authentication credentials
 export const fetchBasicToken = async () => {
-  var app_username = Constants.manifest?.app_username;
-  var app_password = Constants.manifest?.app_password;
+  var app_username = Constants.manifest?.extra?.app_username;
+  var app_password = Constants.manifest?.extra?.app_password;
   const query: string = `
     mutation {
         login(input: { identifier: "${app_username}", password: "${app_password}" }) {

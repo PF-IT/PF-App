@@ -61,7 +61,7 @@ export const RusbookScreen = ({ navigation }: any) => {
         navigation={navigation}
         title={item.Title}
         chapter_id={item.id} // chapter id is being passed, such that chapter content can be fetched also
-        icon_src={Constants.manifest?.strapi + item.Icon.url}
+        icon_src={Constants.manifest?.extra?.strapi + item.Icon.url}
         // icon_src={require("~/assets/images/favicon.png")} // TODO: get icon from backend
         description={item.Description}
       />

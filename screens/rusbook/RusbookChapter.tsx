@@ -87,7 +87,7 @@ const RenderContent = (chapterZone: any) => {
         <Image
           style={styles.image}
           source={{
-            uri: Constants.manifest?.strapi + chapterZone.item.media[0].url,
+            uri: Constants.manifest?.extra?.strapi + chapterZone.item.media[0].url,
           }} // TODO: add logic for multiple images
         />
       );
@@ -97,7 +97,7 @@ const RenderContent = (chapterZone: any) => {
           <Image
             style={styles.image}
             source={{
-              uri: Constants.manifest?.strapi + chapterZone.item.header[0].url,
+              uri: Constants.manifest?.extra?.strapi + chapterZone.item.header[0].url,
             }}
           />
           <Markdown style={mdstyles}>{chapterZone.item.content}</Markdown>
