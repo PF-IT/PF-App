@@ -23,7 +23,8 @@
       "bundleIdentifier": "dk.pf.pfApp"
     },
     "android": {
-      "package": "dk.pf.pf_app_project"
+      "package": "dk.pf.pf_app_project",
+      "versionCode": 6
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
