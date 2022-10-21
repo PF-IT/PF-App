@@ -44,7 +44,7 @@
     "react-native-gesture-handler": "~1.10.2",
     "react-native-markdown-display": "^7.0.0-alpha.2",
     "react-native-markdown-renderer": "^3.2.8",
-    "react-native-reanimated": "~2.2.0",
+    "react-native-reanimated": "~2.10.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-sensitive-info": "^6.0.0-alpha.9",
